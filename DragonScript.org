@@ -68,7 +68,7 @@ public:
 
 
 
-* The
+* Longest Substring Without Repeating Characters
 
 ** Description
 
@@ -88,12 +88,13 @@ Example 3:
 Input: "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3. 
-#+END_SRC
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+#+END_SRC
+
 
 ** Solution
 
 #+BEGIN_SRC
-
+O(nlgn)?? or better?
 #+END_SRC
 
