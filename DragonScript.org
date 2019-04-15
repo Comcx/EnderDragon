@@ -89,10 +89,116 @@ Explanation: The answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 #+END_SRC
 
+** Solution
+
+#+BEGIN_SRC c++
+//O(nlgn)?? or better?
+//Failed to find a better way to check if current elem already existed
+//use array[256]:(
+
+//I tried several several times on Leet but failed:(! Switching back to CodeWars
+class Solution {
+public:
+
+int lengthOfLongestSubstring(string s) {
+        
+  int ans = 1;
+  int acc[256];
+  int p = 0;
+  
+  memset(acc, 0, 256);
+  for(int i = 0; i < s.size(); ++i) {
+    
+    if(acc[s[i]] == 1) {
+
+      while(s[p] != s[i]) {
+      
+        acc[s[p]] = 0;
+    	++p;
+      }
+      p += 1;
+      ans = (ans < i-p+1) ? i-p+1 : ans;
+    }
+    else ans = (ans < i-p+1) ? i-p+1 : ans;
+    acc[s[i]] = 1;
+  }
+  return ans;
+}
+
+};
+
+
+
+#+END_SRC
+
+
+* Find The Parity Outlier
+
+** Description
+You are given an array (which will have a length of at least 3, 
+but could be very large) containing integers. 
+The array is either entirely comprised of odd integers or 
+entirely comprised of even integers except for a single integer N. 
+Write a method that takes the array as an argument and returns this "outlier" N.
+#+BEGIN_SRC 
+
+Examples
+[2, 4, 0, 100, 4, 11, 2602, 36]
+Should return: 11 (the only odd number)
+
+[160, 3, 1719, 19, 11, 13, -21]
+Should return: 160 (the only even number)
+#+END_SRC
 
 ** Solution
 
-#+BEGIN_SRC
-O(nlgn)?? or better?
+#+BEGIN_SRC C++
+int FindOutlier(std::vector<int> arr)
+{
+    int even;
+    int odd;
+  
+    int evenCount = 0;
+    int oddCount = 0;
+  
+    for (auto a : arr)
+        a % 2 == 0 ? (evenCount++, even = a) : (oddCount++, odd = a);
+  
+    return evenCount < oddCount ? even : odd;
+}
+
+
 #+END_SRC
+
+
+
+* Factorial decomposition
+
+** Description
+The aim of the kata is to decompose n! (factorial n) into its prime factors.
+#+BEGIN_SRC 
+Examples:
+
+n = 12; decomp(12) -> "2^10 * 3^5 * 5^2 * 7 * 11"
+since 12! is divisible by 2 ten times, by 3 five times, by 5 two times and by 7 and 11 only once.
+
+n = 22; decomp(22) -> "2^19 * 3^9 * 5^4 * 7^3 * 11^2 * 13 * 17 * 19"
+
+n = 25; decomp(25) -> 2^22 * 3^10 * 5^6 * 7^3 * 11^2 * 13 * 17 * 19 * 23
+Prime numbers should be in increasing order. When the exponent of a prime is 1 don't put the exponent.
+
+#+END_SRC
+*Notes*
+
+- the function is decomp(n) and should return the decomposition of n! into 
+  its prime factors in increasing order of the primes, as a string.
+- factorial can be a very big number (4000! has 12674 digits, n will go from 300 to 4000).
+
+** Solution
+#+BEGIN_SRC 
+
+#+END_SRC
+
+
+
 
