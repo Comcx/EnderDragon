@@ -200,5 +200,94 @@ Prime numbers should be in increasing order. When the exponent of a prime is 1 d
 #+END_SRC
 
 
+* Counting Change Combinations
+
+** Description
+Write a function that counts how many different ways you can make change for an amount of money, given an array of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2:
+
+1+1+1+1, 1+1+2, 2+2.
+
+The order of coins does not matter:
+
+1+1+2 == 2+1+1
+
+Also, assume that you have an infinite amount of coins.
+
+Your function should take an amount to change and an array of unique denominations for the coins:
+
+#+BEGIN_SRC
+  count_change(4, {1,2}) // => 3
+  count_change(10, {5,2,3}) // => 4
+  count_change(11, {5,7}) // => 0
+#+END_SRC
+
+** Solution
+
+#+BEGIN_SRC c++
+
+#include <vector>
+#include <algorithm>
+
+using std::vector;
+unsigned long long 
+dp(unsigned money, const vector<unsigned int>& coins) {
+
+  unsigned long long ans(0);
+  unsigned long long **rc = new unsigned long long*[money + 1];
+  for (int i = 0; i < money+1; ++i) rc[i] = new unsigned long long[coins.size()];
+  
+  for(int i(0); i <= money; ++i)
+    rc[i][coins.size()-1] = i % coins[coins.size()-1] == 0 ? 1 : 0;
+  for(int j(0); j < coins.size(); ++j)
+    rc[0][j] = 1;
+  
+  for(int i(1); i <= money; ++i)
+    for(int j(coins.size()-2); j >= 0; --j) {
+      
+      if(i >= coins[j]) {
+        rc[i][j] = rc[i - coins[j]][j]
+                 + rc[i][j + 1];
+      }
+      else rc[i][j] = 0;
+    }
+  
+  return rc[money][0];
+}
+//count m i = count (m-coins[i]) i + count m (i+1)
+//count 0 _ = 1
+
+unsigned long long 
+countChange(const unsigned int money, const vector<unsigned int>& coins) {
+
+  unsigned long long ans(0);
+  
+  vector<unsigned int> pac(coins);
+  std::sort(pac.begin(), pac.end());
+
+  ans = dp(money, pac);
+  
+  return ans;
+}
+
+#+END_SRC
+
+#+BEGIN_SRC C++
+
+unsigned long long 
+countChange(unsigned money, const std::vector<unsigned>& coins) {
+  std::vector<unsigned long long> ks(money + 1);
+  ks[0] = 1;
+  for (unsigned i : coins)
+    for (unsigned j = i; j <= money; j++)
+      ks[j] += ks[j - i];
+  return ks[money];
+}
+
+#+END_SRC
+
+
+
+
+
 
 
