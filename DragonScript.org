@@ -2,6 +2,18 @@
 #+AUTHOR: Comcx
 #+DATE:   <2019-04-09 二>
 
+:IDEA:
+
+ Well I suddenly contrived the idea that I should find some basic(atom)
+ problems which can be used or composed in various kinds of problems,
+ which can save some time.
+ 
+ Therefore, I'm planning to reconstruct the structure of this script.
+ not only just records of my solutions of katas, but all simple ideas
+ novelty :)
+
+:END:
+
 
 * Add Two Numbers
 
@@ -172,6 +184,17 @@ int FindOutlier(std::vector<int> arr)
 
 
 
+* Cycle detection
+
+** Extant
+*** Floyd algorithm
+
+
+*** Bernt's algorithm(The Teleporting Turtle)
+
+** Experiment
+
+
 * Factorial decomposition
 
 ** Description
@@ -195,8 +218,41 @@ Prime numbers should be in increasing order. When the exponent of a prime is 1 d
 - factorial can be a very big number (4000! has 12674 digits, n will go from 300 to 4000).
 
 ** Solution
-#+BEGIN_SRC 
+#+BEGIN_SRC c++
+#include <string>
+#include <map>
+#include <sstream>
 
+using std::vector;
+using std::string;
+using std::map;
+string decomp(int n) {
+  
+  string ans("");
+  std::stringstream ss;
+  map<int, int> rc {};
+  for(int i(2); i <= n; ++i) {
+    
+    int cur(i);
+    for(auto &p : rc) {
+      while(cur % p.first == 0) {
+        cur /= p.first;
+        p.second++;
+      }
+    }
+    if(cur > 1) rc[cur] = 1;
+  }
+  for(auto p : rc) {
+    
+    (p.second == 1) ?
+      ss << p.first : 
+      ss << p.first << "^" << p.second;
+    ss << " * ";
+  }
+  ans = ss.str();
+  
+  return ans.substr(0, ans.length() - 3);
+}
 #+END_SRC
 
 
