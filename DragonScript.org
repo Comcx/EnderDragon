@@ -343,6 +343,47 @@ countChange(unsigned money, const std::vector<unsigned>& coins) {
 
 
 
+* Longest Palindromic Substring
+
+** Description
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+#+BEGIN_SRC
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+#+END_SRC
+
+Example 2:
+#+BEGIN_SRC
+Input: "cbbd"
+Output: "bb"
+#+END_SRC
+
+** Solution
+#+BEGIN_SRC c++
+
+//DP method
+string longestPalindrome(string s) {
+  
+  int rc[1000][1000], start(0), end(0), cur(0);
+  for(int i(s.size()-1); i >= 0; --i) {
+    for(int j(i); j < s.size(); ++j) {
+      
+      if(i == j) rc[i][j] = 1;
+      else if(j - i == 1) rc[i][j] = s[i] == s[j] ? 2 : 0;
+      else rc[i][j] = 
+        rc[i+1][j-1] && s[i] == s[j] ? rc[i+1][j-1] + 2 : 0;
+      cur = rc[i][j] > cur ?
+        start = i, end = j, rc[i][j] : cur;
+    }
+  }
+  return s.substr(start, end-start+1);
+}
+
+#+END_SRC
+
 
 
 
