@@ -15,7 +15,7 @@
 :END:
 
 
-* Add Two Numbers
+* DONE Add Two Numbers
 
 
 ** Description
@@ -78,7 +78,7 @@ public:
 
 
 
-* Longest Substring Without Repeating Characters
+* DONE Longest Substring Without Repeating Characters
 
 ** Description
 
@@ -144,7 +144,7 @@ int lengthOfLongestSubstring(string s) {
 #+END_SRC
 
 
-* Find The Parity Outlier
+* DONE Find The Parity Outlier
 
 ** Description
 You are given an array (which will have a length of at least 3, 
@@ -184,7 +184,7 @@ int FindOutlier(std::vector<int> arr)
 
 
 
-* Cycle detection
+* NEXT Cycle detection
 
 ** Extant
 *** Floyd algorithm
@@ -195,7 +195,7 @@ int FindOutlier(std::vector<int> arr)
 ** Experiment
 
 
-* Factorial decomposition
+* DONE Factorial decomposition
 
 ** Description
 The aim of the kata is to decompose n! (factorial n) into its prime factors.
@@ -256,7 +256,7 @@ string decomp(int n) {
 #+END_SRC
 
 
-* Counting Change Combinations
+* DONE Counting Change Combinations
 
 ** Description
 Write a function that counts how many different ways you can make change for an amount of money, given an array of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2:
@@ -343,7 +343,7 @@ countChange(unsigned money, const std::vector<unsigned>& coins) {
 
 
 
-* Longest Palindromic Substring
+* DONE Longest Palindromic Substring
 
 ** Description
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
@@ -383,6 +383,72 @@ string longestPalindrome(string s) {
 }
 
 #+END_SRC
+
+
+* DONE ZigZag Conversion
+
+** Description
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string s, int numRows);
+Example 1:
+#+BEGIN_SRC
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+#+END_SRC
+
+Example 2:
+#+BEGIN_SRC
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+
+Explanation:
+
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+#+END_SRC
+
+
+** Solution
+
+#+BEGIN_SRC c++
+
+string Solution::convert(string s, int numRows) {
+  
+  string ans("");
+  int cur(0);
+  if(numRows == 1) return s;
+  for(int i(1); i <= numRows; ++i) {
+    
+    int j(cur), invert(numRows - i);
+    ans += string(1, s[cur]);
+    while((cur = cur + invert * 2) < s.size()) {
+      
+      ans += invert ? string(1, s[cur]) : "";
+      invert = (numRows - invert - 1);
+      if(cur + invert * 2 < s.size()) {
+        ans += invert ? 
+          (cur += invert * 2, string(1, s[cur])) : "";
+      } else break;
+      invert = (numRows - invert - 1);
+    }
+    cur = i;
+  }
+  
+  return ans;
+}
+
+#+END_SRC
+
 
 
 
