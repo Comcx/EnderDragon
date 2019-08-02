@@ -528,3 +528,78 @@ int Solution::climbStairs(int n) {
 
 #+END_SRC
 
+
+* DONE Regular Expression Matching
+
+** Description
+Given an input string (s) and a pattern (p), 
+implement regular expression matching with support for '.' and '*'.
+
+- '.' Matches any single character.
+- '*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
+
+Note:
+
+- s could be empty and contains only lowercase letters a-z.
+- p could be empty and contains only lowercase letters a-z, and characters like . or *.
+Example 1:
+#+BEGIN_SRC
+Input:
+s = "aa"
+p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+#+END_SRC
+Example 2:
+#+BEGIN_SRC
+Input:
+s = "aa"
+p = "a*"
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+#+END_SRC
+Example 3:
+#+BEGIN_SRC
+Input:
+s = "ab"
+p = ".*"
+Output: true
+Explanation: ".*" means "zero or more (*) of any character (.)".
+#+END_SRC
+Example 4:
+#+BEGIN_SRC
+Input:
+s = "aab"
+p = "c*a*b"
+Output: true
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
+#+END_SRC
+Example 5:
+#+BEGIN_SRC
+Input:
+s = "mississippi"
+p = "mis*is*p*."
+Output: false
+#+END_SRC
+
+** Solution
+#+BEGIN_SRC c++
+bool Solution::isMatch(string s, string p) {
+  
+  return
+    p == "" ? s == "" :
+    p.size() > 1 && p[1] == '*' ?
+      isMatch(s, p.substr(2)) || 
+        (s != "" && (s[0] == p[0] || p[0] == '.') && isMatch(s.substr(1), p)) :
+    s != "" && 
+      (s[0] == p[0] || p[0] == '.') && isMatch(s.substr(1), p.substr(1));
+}
+
+#+END_SRC
+
+
+
+
+
+
