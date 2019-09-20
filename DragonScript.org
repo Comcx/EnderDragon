@@ -598,7 +598,33 @@ bool Solution::isMatch(string s, string p) {
 
 #+END_SRC
 
+#+BEGIN_SRC C++
+class Solution {
+public:
+  bool isMatch(string s, string p);
+};
 
+bool Solution::isMatch(string s, string p) {
+  
+  int m(s.size()), n(p.size());
+  bool rc[m+1][n+1];
+  
+  for(int i(m); i >= 0; --i)
+    for(int j(n); j >= 0; --j)
+      
+      rc[i][j] = 
+        i == m && j == n      ? true                     :
+        i == m && p[j] == '*' ? rc[i][j+1]               :
+        i == m || j == n      ? false                    :
+        p[j] == '.'           ? rc[i+1][j+1]             :
+        p[j] == '*'           ? rc[i+1][j] || rc[i][j+1] :
+        p[j] == s[i]          ? rc[i+1][j+1]             :
+        /*otherwise          */ false                    ;
+  
+  return rc[0][0];
+}
+
+#+END_SRC
 
 
 
