@@ -13,6 +13,10 @@
 - Extensible(with /emacs lisp/)
 - Powerful org-mode
 
+** Getting started
+*** Entering Emacs
+
+
 ** Screen organization
 *** The *Frame*: a graphic window or terminal screen occupied by emacs.
 Contains several *Regions*
@@ -43,7 +47,7 @@ where
 
 - ch
   - *--* => same content as file in disk
-  - **** => buffer is modified
+  - **   => buffer is modified
   - *%** => buffer is modified for read-only file
   - *%%* => otherwise
 
@@ -75,12 +79,41 @@ where
   C-g
   #+END_SRC
 
-
 *** *Point*: a basic conception of cursor
 
 ** Charactors, Keys and Commands
 
 
+*** Charactors
+#+BEGIN_SRC 
+Control => Ctrl
+Alt     => Meta(default)
+#+END_SRC
+- Shortcuts:
+  - C-x : Control-x
+  = M-x : Meta-x
+
+Moreover, you can just type [ESC] before charactors to envoke Meta, for example,
+#+BEGIN_SRC 
+ESC a   === M-a
+ESC C-a === C-M-a
+#+END_SRC
+
+/note:/ Emacs may be blocked by window manager, be careful:)
+
+*** Keys
+- Complete key
+- Prefix key
+| C-c     | C-h   | C-x   |
+| C-x RET | C-x @ | C-x a |
+| C-x n   | C-x r | C-x v |
+| C-x 4   | C-x 5 | C-x 6 |
+| ESC     | M-g   | M-o   |
+
+*** Commands
+| Key | function  |
+|-----+-----------|
+| C-n | next-line |
 
 * Flexible Emacs Lisp
 
