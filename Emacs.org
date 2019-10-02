@@ -15,7 +15,43 @@
 
 ** Getting started
 *** Entering Emacs
+Just type
+#+BEGIN_SRC 
+emacs
+#+END_SRC
+and here we are!
 
+#+BEGIN_SRC 
+C-h t
+Emacs Tutorial
+#+END_SRC
+
+If we do not want to display the startup screen(which I think is ugly:(),
+set the variable
+#+BEGIN_SRC 
+inhibit-startup-screen
+#+END_SRC
+to =nil=
+then instead, Emacs will display a buffer named **scratch**
+which can be used to evaluate elisp codes.
+
+Moreover, we can also force emacs to display certain file at startup by setting the variable
+#+BEGIN_SRC 
+initial-buffer-choice
+#+END_SRC
+to a file path
+
+*** Exiting Emacs
+- C-x C-c : Kill Emacs
+| command                | function                                      |
+| confirm-kill-processes | ask for confirmation for killing subprocesses |
+| confirm-kill-emacs     |                                               |
+- C-z 
+#+BEGIN_SRC 
+(if (on text terminal) 
+  (suspend Emacs) 
+  (minimize selected frame))
+#+END_SRC
 
 ** Screen organization
 *** The *Frame*: a graphic window or terminal screen occupied by emacs.
@@ -82,8 +118,6 @@ where
 *** *Point*: a basic conception of cursor
 
 ** Charactors, Keys and Commands
-
-
 *** Charactors
 #+BEGIN_SRC 
 Control => Ctrl
@@ -91,7 +125,7 @@ Alt     => Meta(default)
 #+END_SRC
 - Shortcuts:
   - C-x : Control-x
-  = M-x : Meta-x
+  - M-x : Meta-x
 
 Moreover, you can just type [ESC] before charactors to envoke Meta, for example,
 #+BEGIN_SRC 
