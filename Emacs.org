@@ -62,11 +62,6 @@ F10
 to open menu(menu-bar-open)
 #+END_SRC
 
-- Keys for arrow operations
-|     | C-p |     |
-| C-b |     | C-f |
-|     | C-n |     |
-
 **** Tool bar
 **** Window(text area): display /buffer/
 at least one selected at any time
@@ -115,7 +110,10 @@ where
   C-g
   #+END_SRC
 
+** Editing elements
 *** *Point*: a basic conception of cursor
+*** *Mark*
+*** *Region*
 
 ** Charactors, Keys and Commands
 *** Charactors
@@ -148,6 +146,29 @@ ESC C-a === C-M-a
 | Key | function  |
 |-----+-----------|
 | C-n | next-line |
+
+**** Inserting Text
+
+**** Changing location of Point
+- Keys for arrow operations
+|     | C-p |     |
+| C-b |     | C-f |
+|     | C-n |     |
+
+
+**** Erasing Text
+
+**** Undoing
+
+**** Files
+
+**** Help
+
+**** Information
+
+**** Numeric Arguments
+
+**** Repeating Commands
 
 * Flexible Emacs Lisp
 
