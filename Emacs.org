@@ -1,0 +1,96 @@
+#+TITLE:  Emacs study note
+#+AUTHOR: Comcx
+#+DATE:   <2019-10-02 三>
+
+* Basic operation
+
+** Introduction
+*GNU Emacs*
+*** Advancement
+- Controling of processes
+- Self-documenting
+- Customization
+- Extensible(with /emacs lisp/)
+- Powerful org-mode
+
+** Screen organization
+*** The *Frame*: a graphic window or terminal screen occupied by emacs.
+Contains several *Regions*
+**** Menu bar
+#+BEGIN_SRC 
+F10
+to open menu(menu-bar-open)
+#+END_SRC
+
+- Keys for arrow operations
+|     | C-p |     |
+| C-b |     | C-f |
+|     | C-n |     |
+
+**** Tool bar
+**** Window(text area): display /buffer/
+at least one selected at any time
+**** Mode line
+Describe current buffer
+#+BEGIN_SRC 
+Format: 
+cs:ch-fr buf      pos line   (major minor)
+#+END_SRC
+where
+- cs => charactor set
+  - *-* => no special char set
+  - *=* => no conversion
+
+- ch
+  - *--* => same content as file in disk
+  - **** => buffer is modified
+  - *%** => buffer is modified for read-only file
+  - *%%* => otherwise
+
+- -
+  - *-* => normal
+  - *@* => default-directory is on a remote machine
+
+- fr: file name(terminal only)
+
+- buf: buffer name
+
+**** Echo area
+- for echoing commands and errors
+  #+BEGIN_SRC 
+  C-x =
+  Display a message describing the char at point, its position and its current column
+  #+END_SRC
+  the message are saved in a special buffer named **Message**,
+  the variable
+  #+BEGIN_SRC emacs-lisp
+  message-log-max
+  #+END_SRC
+  limit **Message** buffer to a certain number of lines
+
+- To display the *minibuffer*
+  a special window to input some commands
+  can always get out of *minibuffer* by typing in
+  #+BEGIN_SRC emacs-lisp
+  C-g
+  #+END_SRC
+
+
+*** *Point*: a basic conception of cursor
+
+** Charactors, Keys and Commands
+
+
+
+* Flexible Emacs Lisp
+
+
+* Awesome org-mode
+
+
+
+
+
+
+
+
