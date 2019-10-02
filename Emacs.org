@@ -149,6 +149,17 @@ ESC C-a === C-M-a
 
 **** Inserting Text
 
+- Overview
+| Key   | Function             |
+|-------+----------------------|
+| RET   | newline              |
+| DEL   | delete-backward-char |
+| C-q   | quoted-insert        |
+| C-x 8 |                      |
+
+- Usage of =C-q=
+
+
 **** Changing location of Point
 - Keys for arrow operations
 |     | C-p |     |
