@@ -143,16 +143,13 @@ ESC C-a === C-M-a
   | ESC     | M-g   | M-o   |
 
 *** Commands
-| Key | function  |
-|-----+-----------|
-| C-n | next-line |
-
 **** Inserting Text
 
 - Overview
   | Key   | Function             |
   |-------+----------------------|
   | RET   | newline              |
+  | C-o   | open-line            |
   | DEL   | delete-backward-char |
   | C-q   | quoted-insert        |
   | C-x 8 |                      |
@@ -185,30 +182,95 @@ ESC C-a === C-M-a
   | left-char |               | right-char |    
   |           | next-line     |            |    
 
+- Inline operations
+  | C-a                   | C-e              |
+  | Home                  | End              |
+  | move-begining-of-line | move-end-of-line |
+
+  -----
+  | M-b           | M-f          |
+  | backward-word | forward-word |
+  |               |              |
+  | C-LEFT        | C-RIGHT      |
+  | M-LEFT        | M-RIGHT      |
+  | left-word     | right-word   |
+
+- Reposition line
   #+BEGIN_SRC 
-  C-a                     C-e
-  Home                    End
-  move-begining-of-line   move-end-of-line
+  M-r
+  move-to-window-line-top-bottom
+  --without moving the text on the screen, move point to leftmost of the center line
   #+END_SRC  
 
+- Global jump
+  | M-<                | M->           |
+  | begining-of-buffer | end-of-buffer |
+  
+  -----
+  | C-v               | M-v                 |
+  | PageDown          | PageUp              |
+  | next              | prior               |
+  | scroll-up-command | scroll-down-command |
+
   #+BEGIN_SRC 
-  M-b                        M-f
-  backward-word              forward-word
+  M-g c
+  \n => go to position n
+  #+END_SRC
    
-  C-LEFT                     C-RIGHT
-  M-LEFT                     M-RIGHT
-  left-word                 right-word
+  | M-g M-g   | M-g TAB        |
+  | M-g g     |                |
+  | goto-line | move-to-column |
+
+  #+BEGIN_SRC 
+  C-x C-n         C-u C-x C-n
   #+END_SRC
 
 **** Erasing Text
 
+| DEL                  | Delete              |
+| BACKSPACE            |                     |
+| delete-backward-char | delete-forward-char |
+
+-----
+| C-d         | M-d       |
+| delete-char | kill-word |
+// all forward
+
+#+BEGIN_SRC 
+C-k
+kill-line
+#+END_SRC
+
+#+BEGIN_SRC 
+M-DEL
+M-BACKSPACE
+backward-kill-word
+#+END_SRC
+
+
+
 **** Undoing
+#+BEGIN_SRC 
+C-/
+C-x u
+C-_
+#+END_SRC
 
 **** Files
+#+BEGIN_SRC 
+C-x C-f        C-x C-s
+find-file      save-buffer
+#+END_SRC
 
 **** Help
+#+BEGIN_SRC 
+C-h k
+describe-key
+\key => describe key
+#+END_SRC
 
 **** Information
+
 
 **** Numeric Arguments
 
