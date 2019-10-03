@@ -170,7 +170,7 @@ ESC C-a === C-M-a
   | C-b |     | C-f | => 
   |     | C-n |     |    
   
-    
+  -----
   |               | previous-line |              |    
   | backward-char |               | forward-char |    
   |               | next-line     |              |    
@@ -180,7 +180,7 @@ ESC C-a === C-M-a
   | LEFT |      | RIGHT | => 
   |      | DOWN |       |    
 
-
+  -----
   |           | previous-line |            |    
   | left-char |               | right-char |    
   |           | next-line     |            |    
