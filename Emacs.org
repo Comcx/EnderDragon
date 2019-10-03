@@ -166,22 +166,24 @@ ESC C-a === C-M-a
 
 **** Changing location of Point
 - Keys for arrow operations
-  |               | C-p           |              |    |
-  | C-b           |               | C-f          | => |
-  |               | C-n           |              |    |
-  |               |               |              |    |
-  |               | previous-line |              |    |
-  | backward-char |               | forward-char |    |
-  |               | next-line     |              |    |
+  |     | C-p |     |    |
+  | C-b |     | C-f | => |
+  |     | C-n |     |    |
+  |     |     |     |    |
+    
+  |               | previous-line |              |    
+  | backward-char |               | forward-char |    
+  |               | next-line     |              |    
 
   -----
-  |           | UP            |            |    |
-  | LEFT      |               | RIGHT      | => |
-  |           | DOWN          |            |    |
-  |           |               |            |    |
-  |           | previous-line |            |    |
-  | left-char |               | right-char |    |
-  |           | next-line     |            |    |
+  |      | UP   |       |    |
+  | LEFT |      | RIGHT | => |
+  |      | DOWN |       |    |
+  |      |      |       |    |
+
+  |           | previous-line |            |    
+  | left-char |               | right-char |    
+  |           | next-line     |            |    
 
 
 **** Erasing Text
