@@ -123,7 +123,8 @@ where
   | previous-history-element | next-history-element |
 
 ** Editing elements
-*** *Point*: a basic conception of cursor
+*** *Point*
+: a basic conception of cursor
 *** *Mark*
 - *Setting mark* (Very useful:)
   | C-SPC   | Set mark at point and activate                 |
@@ -152,6 +153,37 @@ where
 **** Mark Ring
 **** Kill Ring
 *** *Regex*
+
+*** *Buffer*
+- Creating and Selection
+  | C-x b     | (switch-to-buffer)select or create |
+  | C-x 4 b   | switch-to-buffer-other-window      |
+  | C-x 5 b   | switch-to-buffer-other-frame       |
+  | C-x LEFT  | previous-buffer                    |
+  | C-x RIGHT | next-buffer                        |
+- Listing
+  =C-x C-b=
+- Killing
+  | C-x k                 | kill-buffer |
+  | M-x kill-some-buffers |             |
+
+*** *Window*
+- Spliting
+  | C-x 2 | split-window-below |
+  | C-x 3 | split-window-right |
+- Selection
+  =C-x o=
+- Resizing
+  | C-x o | delete-window                       |
+  | C-x 1 | delete-other-windows                |
+  | C-x ^ | enlarge-window                      |
+  | C-x } | enlarge-window-horizontally         |
+  | C-x { | shrink-window-horizontally          |
+  | C-x - | shrink-window-if-larger-than-buffer |
+  | C-x + | balance-window                      |
+
+*** *Frame*
+
 
 ** Charactors, Keys and Commands
 *** Charactors
@@ -314,15 +346,21 @@ C-_
   C-x C-f        C-x C-s
   find-file      save-buffer
   #+END_SRC
-
 - Visiting
   | C-x C-f | find-file              |
   | C-x C-r | find-file-read-only    |
   | C-x C-v | find-alternate-file    |
   | C-x 4 f | find-file-other-window |
   | C-x 5 f | find-file-other-frame  |
-
-
+- Saving
+  | C-x C-s | save-buffer                                           |
+  | C-x s   | save-some-buffers                                     |
+  | C-x C-w | write-file(save current buffer with a specified name) |
+- Reverting
+  #+BEGIN_SRC 
+  M-x revert-buffer
+  #+END_SRC
+  (need to be careful, this may lose a lot work:)
 
 **** Help
 #+BEGIN_SRC 
