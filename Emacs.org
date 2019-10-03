@@ -137,7 +137,7 @@ where
 - *Mark Ring*  
   Every buffer has a /mark ring/.
   | C-SPC C-SPC | set mark without activating it |
-  | C-u         | C-SPC => Jump to previous mark |
+  | C-u C-SPC   | Jump to previous mark          |
 
 *** *Region*
 - Operations on region
@@ -180,7 +180,8 @@ ESC C-a === C-M-a
   | ESC     | M-g   | M-o   |
 
 *** Commands
-**** Inserting Text
+**** Editing
+***** Inserting Text
 
 - Overview
   | Key   | Function             |
@@ -198,7 +199,7 @@ ESC C-a === C-M-a
     C-q 1 0 1 B => insert 'AB'
     #+END_SRC
 
-**** Changing location of Point
+***** Changing location of Point
 - Keys for arrow operations
   |     | C-p |     |    |
   | C-b |     | C-f | => |
@@ -262,7 +263,7 @@ ESC C-a === C-M-a
   C-x C-n         C-u C-x C-n
   #+END_SRC
 
-**** Erasing Text
+***** Erasing Text
 
 | DEL                  | Delete              |
 | BACKSPACE            |                     |
@@ -282,11 +283,12 @@ ESC C-a === C-M-a
 | M-^         | (delete indentation)Join two lines |
 |             |                                    |
 
-**** Yanking
-| C-y | Yank last kill into point     |
-| M-y | Replace text with last killed |
+***** Yanking
+| C-y | Yank last kill into point                                  |
+| M-y | Replace text with last killed(point to previous kill ring) |
+(M-y is magic!:)
 
-**** Undoing
+***** Undoing
 #+BEGIN_SRC 
 C-/
 C-x u
@@ -324,6 +326,14 @@ e.g. M-5 C-f: forward 5 chars
 #+BEGIN_SRC 
 C-x z
 #+END_SRC
+
+**** Display Controlling
+- Scrolling
+- Recentering
+- Narrowing
+- Modes
+- Faces
+- Scale
 
 * Emacs Lisp
 
