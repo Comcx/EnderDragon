@@ -103,7 +103,7 @@ where
   #+END_SRC
   the message are saved in a special buffer named **Message**,
   the variable
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC 
   message-log-max
   #+END_SRC
   limit **Message** buffer to a certain number of lines
@@ -111,7 +111,7 @@ where
 - To display the *minibuffer*
   a special window to input some commands
   can always get out of *minibuffer* by typing in
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC 
   C-g
   #+END_SRC
 
@@ -175,9 +175,9 @@ ESC C-a === C-M-a
 
 **** Changing location of Point
 - Keys for arrow operations
-  |     | C-p |     |    
-  | C-b |     | C-f | => 
-  |     | C-n |     |    
+  |     | C-p |     |    |
+  | C-b |     | C-f | => |
+  |     | C-n |     |    |
   
   -----
   |               | previous-line |              |    
@@ -185,9 +185,9 @@ ESC C-a === C-M-a
   |               | next-line     |              |    
 
   -----
-  |      | UP   |       |    
-  | LEFT |      | RIGHT | => 
-  |      | DOWN |       |    
+  |      | UP   |       |    |
+  | LEFT |      | RIGHT | => |
+  |      | DOWN |       |    |
 
   -----
   |           | previous-line |            |    
