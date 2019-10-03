@@ -1,4 +1,4 @@
-#+TITLE:  Emacs study note
+#+TITLE:  Emacs Super Cheetsheet
 #+AUTHOR: Comcx
 #+DATE:   <2019-10-02 三>
 
@@ -151,7 +151,8 @@ where
 *** *Ring* 
 **** Mark Ring
 **** Kill Ring
- 
+*** *Regex*
+
 ** Charactors, Keys and Commands
 *** Charactors
 #+BEGIN_SRC 
@@ -178,6 +179,18 @@ ESC C-a === C-M-a
   | C-x n   | C-x r | C-x v |
   | C-x 4   | C-x 5 | C-x 6 |
   | ESC     | M-g   | M-o   |
+
+**** Key Macros
+Abstraction of Composition of keys!
+- Definition
+  | C-x ( | start definition |
+  | F3    | same as above    |
+  | C-x ) | end definition   |
+  | F4    | same as above    |
+
+- Execute
+  | C-x e  | Excute last macro                   |
+  | C-u F3 | Re-execute last one and append keys |
 
 *** Commands
 **** Editing
@@ -296,10 +309,20 @@ C-_
 #+END_SRC
 
 **** Files
-#+BEGIN_SRC 
-C-x C-f        C-x C-s
-find-file      save-buffer
-#+END_SRC
+- Most useful
+  #+BEGIN_SRC 
+  C-x C-f        C-x C-s
+  find-file      save-buffer
+  #+END_SRC
+
+- Visiting
+  | C-x C-f | find-file              |
+  | C-x C-r | find-file-read-only    |
+  | C-x C-v | find-alternate-file    |
+  | C-x 4 f | find-file-other-window |
+  | C-x 5 f | find-file-other-frame  |
+
+
 
 **** Help
 #+BEGIN_SRC 
@@ -316,33 +339,97 @@ describe-key
 | M-x count-words | count-words(of whole buffer:) |
 | C-x =           | what-cursor-position          |
 
-**** Numeric Arguments
+**** Meta
+***** Numeric Arguments
 #+BEGIN_SRC 
 M-<number> <other keys>
 e.g. M-5 C-f: forward 5 chars
 #+END_SRC
 
-**** Repeating Commands
+***** Repeating Commands
 #+BEGIN_SRC 
 C-x z
 #+END_SRC
 
 **** Display Controlling
-- Scrolling
-- Recentering
-- Narrowing
-- Modes
-- Faces
-- Scale
+***** Scrolling
+- Vertical
+  | C-v               | M-v                 |
+  | PageDown          | PageUp              |
+  | next              | prior               |
+  | scroll-up-command | scroll-down-command |
+
+- Horizontal(somehow disabled by default!)
+  | C-x < | scroll-left (disabled!!) |
+  | C-x > | scroll-right(disabled!!) |
+
+***** Recentering
+  | Key   | Function                                |
+  |-------+-----------------------------------------|
+  | C-l   | recenter-top-bottom                     |
+  | C-M-l | reposition-window(scroll heuristically) |
+
+***** Narrowing
+:(Disabled by default!)
+
+***** Modes
+- View mode(read-only)
+
+- Follow mode
+#+BEGIN_SRC 
+C-x 3
+M-x follow-mode
+#+END_SRC
+
+***** Faces
+- Text
+  To see current definitions
+  #+BEGIN_SRC 
+  M-x list-faces-display
+  #+END_SRC
+- Color
+  To view color names
+  #+BEGIN_SRC 
+  M-x list-color-display
+  #+END_SRC
+- Standard faces
+  Here I list only some of them:
+  | default     | 
+  | bold        | 
+  | italic      | 
+  | bold-italic | 
+  | underline   | 
+  | shadow      | 
+  | highlight   | 
+  More faces visit GNU Emacs official guide
+
+***** Scale
+| C-x C-+ | Zoom in  |
+| C-x C-- | Zoom out |
+
+***** Cursor
+
+**** Searching and Replacement
+- Searching
+  | C-s   | isearch-forward         |
+  | C-r   | isearch-backward        |
+  | C-M-s | isearch-forward-regexp  |
+  | C-M-r | isearch-backward-regexp |
+
+- Replacement
+  | M-%   | query-replace        |
+  | C-M-% | query-replace-regexp |
+  - Batch replacement
+  #+BEGIN_SRC 
+  M-x replace-string
+  #+END_SRC
 
 * Emacs Lisp
 
-
-* Awesome org-mode
-
+* Awesome Org-mode
 
 
-
+it's me!
 
 
 
