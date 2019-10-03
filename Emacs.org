@@ -185,6 +185,20 @@ ESC C-a === C-M-a
   | left-char |               | right-char |    
   |           | next-line     |            |    
 
+  #+BEGIN_SRC 
+  C-a                     C-e
+  Home                    End
+  move-begining-of-line   move-end-of-line
+  #+END_SRC  
+
+  #+BEGIN_SRC 
+  M-b                        M-f
+  backward-word              forward-word
+   
+  C-LEFT                     C-RIGHT
+  M-LEFT                     M-RIGHT
+  left-word                 right-word
+  #+END_SRC
 
 **** Erasing Text
 
