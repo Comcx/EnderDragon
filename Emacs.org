@@ -2,6 +2,11 @@
 #+AUTHOR: Comcx
 #+DATE:   <2019-10-02 三>
 
+:IDEA:
+Hello, I am reading emacs official guide
+Here I record things I encountered
+:END:
+
 * Basic operation
 
 ** Introduction
@@ -109,6 +114,13 @@ where
   #+BEGIN_SRC emacs-lisp
   C-g
   #+END_SRC
+
+***** Minibuffer
+- Completion
+- History
+  | M-p                      | M-n                  |
+  | UP                       | DOWN                 |
+  | previous-history-element | next-history-element |
 
 ** Editing elements
 *** *Point*: a basic conception of cursor
@@ -247,7 +259,10 @@ M-BACKSPACE
 backward-kill-word
 #+END_SRC
 
-
+#+BEGIN_SRC 
+C-x C-o
+delete-blank-lines
+#+END_SRC
 
 **** Undoing
 #+BEGIN_SRC 
@@ -270,11 +285,23 @@ describe-key
 #+END_SRC
 
 **** Information
-
+| Key             | Command                       |
+|-----------------+-------------------------------|
+| M-x what-line   | what-line                     |
+| M-=             | count-words-region            |
+| M-x count-words | count-words(of whole buffer:) |
+| C-x =           | what-cursor-position          |
 
 **** Numeric Arguments
+#+BEGIN_SRC 
+M-<number> <other keys>
+e.g. M-5 C-f: forward 5 chars
+#+END_SRC
 
 **** Repeating Commands
+#+BEGIN_SRC 
+C-x z
+#+END_SRC
 
 * Flexible Emacs Lisp
 
