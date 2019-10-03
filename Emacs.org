@@ -136,11 +136,11 @@ ESC C-a === C-M-a
 *** Keys
 - Complete key
 - Prefix key
-| C-c     | C-h   | C-x   |
-| C-x RET | C-x @ | C-x a |
-| C-x n   | C-x r | C-x v |
-| C-x 4   | C-x 5 | C-x 6 |
-| ESC     | M-g   | M-o   |
+  | C-c     | C-h   | C-x   |
+  | C-x RET | C-x @ | C-x a |
+  | C-x n   | C-x r | C-x v |
+  | C-x 4   | C-x 5 | C-x 6 |
+  | ESC     | M-g   | M-o   |
 
 *** Commands
 | Key | function  |
@@ -158,13 +158,30 @@ ESC C-a === C-M-a
   | C-x 8 |                      |
 
 - Usage of =C-q=
-
+  1) insert special charactor(like [DEL])
+  2) insert with octal number
+    #+BEGIN_SRC 
+    C-q 1 0 1 B => insert 'AB'
+    #+END_SRC
 
 **** Changing location of Point
 - Keys for arrow operations
   |     | C-p |     |
-  | C-b |     | C-f |
+  | C-b |     | C-f |   =>
   |     | C-n |     |
+
+  |               | previous-line |              |
+  | backward-char |               | forward-char |
+  |               | next-line     |              |
+
+  -----
+  |      | UP   |       |
+  | LEFT |      | RIGHT |  =>
+  |      | DOWN |       |
+
+  |           | previous-line |            |
+  | left-char |               | right-char |
+  |           | next-line     |            |
 
 
 **** Erasing Text
