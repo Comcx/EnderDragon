@@ -123,6 +123,25 @@ where
   | previous-history-element | next-history-element |
 
 ** Editing elements
+*** *Charactors*
+#+BEGIN_SRC 
+Control => Ctrl
+Alt     => Meta(default)
+#+END_SRC
+- Shortcuts:
+  - C-x : Control-x
+  - M-x : Meta-x
+
+Moreover, you can just type [ESC] before charactors to envoke Meta, for example,
+#+BEGIN_SRC 
+ESC a   === M-a
+ESC C-a === C-M-a
+#+END_SRC
+
+/note:/ Emacs may be blocked by window manager, be careful:)
+
+**** Charactor Set
+
 *** *Point*
 : a basic conception of cursor
 *** *Mark*
@@ -183,26 +202,12 @@ where
   | C-x + | balance-window                      |
 
 *** *Frame*
+| C-x 5 0 | delete-frame                         |
+| C-z     | suspend-frame                        |
+| C-x 5 o | Select another frame                 |
+| C-x 5 1 | Delete all frams except selected one |
 
-
-** Charactors, Keys and Commands
-*** Charactors
-#+BEGIN_SRC 
-Control => Ctrl
-Alt     => Meta(default)
-#+END_SRC
-- Shortcuts:
-  - C-x : Control-x
-  - M-x : Meta-x
-
-Moreover, you can just type [ESC] before charactors to envoke Meta, for example,
-#+BEGIN_SRC 
-ESC a   === M-a
-ESC C-a === C-M-a
-#+END_SRC
-
-/note:/ Emacs may be blocked by window manager, be careful:)
-
+** Keys and Commands
 *** Keys
 - Complete key
 - Prefix key
@@ -461,6 +466,11 @@ M-x follow-mode
   #+BEGIN_SRC 
   M-x replace-string
   #+END_SRC
+
+** Modes
+*** Major Modes
+
+*** Minor Modes
 
 * Emacs Lisp
 
