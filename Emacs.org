@@ -166,20 +166,20 @@ ESC C-a === C-M-a
 
 **** Changing location of Point
 - Keys for arrow operations
-  |     | C-p |     |    |
-  | C-b |     | C-f | => |
-  |     | C-n |     |    |
-  |     |     |     |    |
+  |     | C-p |     |    
+  | C-b |     | C-f | => 
+  |     | C-n |     |    
+  
     
   |               | previous-line |              |    
   | backward-char |               | forward-char |    
   |               | next-line     |              |    
 
   -----
-  |      | UP   |       |    |
-  | LEFT |      | RIGHT | => |
-  |      | DOWN |       |    |
-  |      |      |       |    |
+  |      | UP   |       |    
+  | LEFT |      | RIGHT | => 
+  |      | DOWN |       |    
+
 
   |           | previous-line |            |    
   | left-char |               | right-char |    
