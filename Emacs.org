@@ -125,8 +125,33 @@ where
 ** Editing elements
 *** *Point*: a basic conception of cursor
 *** *Mark*
-*** *Region*
+- *Setting mark* (Very useful:)
+  | C-SPC   | Set mark at point and activate                 |
+  | C-@     | same as above                                  |
+  | C-x C-x | C-SPC then exchange last mark with point       |
+  | M-@     | (mark-word)mark end of next word               |
+  | M-h     | point => begining of para and mark end of para |
+  | C-x C-p | point => begining of page and mark end of page |
+  | C-x h   | point => begining of buff and mark end of buff |
 
+- *Mark Ring*  
+  Every buffer has a /mark ring/.
+  | C-SPC C-SPC | set mark without activating it |
+  | C-u         | C-SPC => Jump to previous mark |
+
+*** *Region*
+- Operations on region
+  | C-w        | Kill it                          |
+  | M-w        | Copy it                          |
+  | C-x C-[lu] | Convert case:(some how disabled) |
+  | C-u C-/    | Undo within                      |
+  | C-x TAB    | Indent                           |
+  | C-M-\      | same as above                    |
+  
+*** *Ring* 
+**** Mark Ring
+**** Kill Ring
+ 
 ** Charactors, Keys and Commands
 *** Charactors
 #+BEGIN_SRC 
@@ -248,21 +273,18 @@ ESC C-a === C-M-a
 | delete-char | kill-word |
 // all forward
 
-#+BEGIN_SRC 
-C-k
-kill-line
-#+END_SRC
+| Key         | Function                           |
+|-------------+------------------------------------|
+| C-k         | kill-line                          |
+| M-DEL       | backward-kill-word                 |
+| M-BACKSPACE | same                               |
+| C-x C-o     | delete-blank-lines                 |
+| M-^         | (delete indentation)Join two lines |
+|             |                                    |
 
-#+BEGIN_SRC 
-M-DEL
-M-BACKSPACE
-backward-kill-word
-#+END_SRC
-
-#+BEGIN_SRC 
-C-x C-o
-delete-blank-lines
-#+END_SRC
+**** Yanking
+| C-y | Yank last kill into point     |
+| M-y | Replace text with last killed |
 
 **** Undoing
 #+BEGIN_SRC 
@@ -303,7 +325,7 @@ e.g. M-5 C-f: forward 5 chars
 C-x z
 #+END_SRC
 
-* Flexible Emacs Lisp
+* Emacs Lisp
 
 
 * Awesome org-mode

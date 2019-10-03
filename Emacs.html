@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-03 四 10:35 -->
+<!-- 2019-10-03 四 14:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs study note</title>
@@ -234,42 +234,43 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd95a29b">1. Basic operation</a>
+<li><a href="#org062df77">1. Basic operation</a>
 <ul>
-<li><a href="#org5e0a80c">1.1. Introduction</a>
+<li><a href="#org027e766">1.1. Introduction</a>
 <ul>
-<li><a href="#orgb2aad2f">1.1.1. Advancement</a></li>
+<li><a href="#orgd1d4734">1.1.1. Advancement</a></li>
 </ul>
 </li>
-<li><a href="#org825348b">1.2. Getting started</a>
+<li><a href="#org59733d6">1.2. Getting started</a>
 <ul>
-<li><a href="#org9c8aac3">1.2.1. Entering Emacs</a></li>
-<li><a href="#org263d3cc">1.2.2. Exiting Emacs</a></li>
+<li><a href="#org06b468c">1.2.1. Entering Emacs</a></li>
+<li><a href="#org05f4fe8">1.2.2. Exiting Emacs</a></li>
 </ul>
 </li>
-<li><a href="#org5b23c1d">1.3. Screen organization</a>
+<li><a href="#orgdb988cb">1.3. Screen organization</a>
 <ul>
-<li><a href="#org5c174f3">1.3.1. The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</a></li>
+<li><a href="#orgc1f1b2c">1.3.1. The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</a></li>
 </ul>
 </li>
-<li><a href="#org2853961">1.4. Editing elements</a>
+<li><a href="#orgc3b9110">1.4. Editing elements</a>
 <ul>
-<li><a href="#org73e14a6">1.4.1. <b>Point</b>: a basic conception of cursor</a></li>
-<li><a href="#org4415686">1.4.2. <b>Mark</b></a></li>
-<li><a href="#org5c23e5b">1.4.3. <b>Region</b></a></li>
+<li><a href="#orgacf5159">1.4.1. <b>Point</b>: a basic conception of cursor</a></li>
+<li><a href="#org9084df3">1.4.2. <b>Mark</b></a></li>
+<li><a href="#orgf30987f">1.4.3. <b>Region</b></a></li>
+<li><a href="#org92b56ce">1.4.4. <b>Ring</b></a></li>
 </ul>
 </li>
-<li><a href="#orgb1ce382">1.5. Charactors, Keys and Commands</a>
+<li><a href="#orga0d3219">1.5. Charactors, Keys and Commands</a>
 <ul>
-<li><a href="#org6e02eac">1.5.1. Charactors</a></li>
-<li><a href="#orge70a2f5">1.5.2. Keys</a></li>
-<li><a href="#org4b20e95">1.5.3. Commands</a></li>
+<li><a href="#orgbf3866e">1.5.1. Charactors</a></li>
+<li><a href="#orgafbc4be">1.5.2. Keys</a></li>
+<li><a href="#org439e72a">1.5.3. Commands</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgedb55b2">2. Flexible Emacs Lisp</a></li>
-<li><a href="#org161b7f4">3. Awesome org-mode</a></li>
+<li><a href="#org3816c48">2. Emacs Lisp</a></li>
+<li><a href="#org1ad2802">3. Awesome org-mode</a></li>
 </ul>
 </div>
 </div>
@@ -278,19 +279,19 @@ Hello, I am reading emacs official guide
 Here I record things I encountered
 </p>
 
-<div id="outline-container-orgd95a29b" class="outline-2">
-<h2 id="orgd95a29b"><span class="section-number-2">1</span> Basic operation</h2>
+<div id="outline-container-org062df77" class="outline-2">
+<h2 id="org062df77"><span class="section-number-2">1</span> Basic operation</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org5e0a80c" class="outline-3">
-<h3 id="org5e0a80c"><span class="section-number-3">1.1</span> Introduction</h3>
+<div id="outline-container-org027e766" class="outline-3">
+<h3 id="org027e766"><span class="section-number-3">1.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>GNU Emacs</b>
 </p>
 </div>
-<div id="outline-container-orgb2aad2f" class="outline-4">
-<h4 id="orgb2aad2f"><span class="section-number-4">1.1.1</span> Advancement</h4>
+<div id="outline-container-orgd1d4734" class="outline-4">
+<h4 id="orgd1d4734"><span class="section-number-4">1.1.1</span> Advancement</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Controling of processes</li>
@@ -303,12 +304,12 @@ Here I record things I encountered
 </div>
 </div>
 
-<div id="outline-container-org825348b" class="outline-3">
-<h3 id="org825348b"><span class="section-number-3">1.2</span> Getting started</h3>
+<div id="outline-container-org59733d6" class="outline-3">
+<h3 id="org59733d6"><span class="section-number-3">1.2</span> Getting started</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org9c8aac3" class="outline-4">
-<h4 id="org9c8aac3"><span class="section-number-4">1.2.1</span> Entering Emacs</h4>
+<div id="outline-container-org06b468c" class="outline-4">
+<h4 id="org06b468c"><span class="section-number-4">1.2.1</span> Entering Emacs</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Just type
@@ -350,8 +351,8 @@ to a file path
 </div>
 </div>
 
-<div id="outline-container-org263d3cc" class="outline-4">
-<h4 id="org263d3cc"><span class="section-number-4">1.2.2</span> Exiting Emacs</h4>
+<div id="outline-container-org05f4fe8" class="outline-4">
+<h4 id="org05f4fe8"><span class="section-number-4">1.2.2</span> Exiting Emacs</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>C-x C-c : Kill Emacs</li>
@@ -393,19 +394,19 @@ to a file path
 </div>
 </div>
 
-<div id="outline-container-org5b23c1d" class="outline-3">
-<h3 id="org5b23c1d"><span class="section-number-3">1.3</span> Screen organization</h3>
+<div id="outline-container-orgdb988cb" class="outline-3">
+<h3 id="orgdb988cb"><span class="section-number-3">1.3</span> Screen organization</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org5c174f3" class="outline-4">
-<h4 id="org5c174f3"><span class="section-number-4">1.3.1</span> The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</h4>
+<div id="outline-container-orgc1f1b2c" class="outline-4">
+<h4 id="orgc1f1b2c"><span class="section-number-4">1.3.1</span> The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Contains several <b>Regions</b>
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="orgcbfa21a"></a>Menu bar<br />
+<li><a id="org377383a"></a>Menu bar<br />
 <div class="outline-text-5" id="text-1-3-1-1">
 <pre class="example">
 F10
@@ -414,15 +415,15 @@ to open menu(menu-bar-open)
 </div>
 </li>
 
-<li><a id="org45dc4dc"></a>Tool bar<br /></li>
-<li><a id="org8367776"></a>Window(text area): display <i>buffer</i><br />
+<li><a id="org6d88366"></a>Tool bar<br /></li>
+<li><a id="org88e9069"></a>Window(text area): display <i>buffer</i><br />
 <div class="outline-text-5" id="text-1-3-1-3">
 <p>
 at least one selected at any time
 </p>
 </div>
 </li>
-<li><a id="org350d7e1"></a>Mode line<br />
+<li><a id="orgd2f524f"></a>Mode line<br />
 <div class="outline-text-5" id="text-1-3-1-4">
 <p>
 Describe current buffer
@@ -462,7 +463,7 @@ where
 </div>
 </li>
 
-<li><a id="org62bc3b1"></a>Echo area<br />
+<li><a id="org96e65c4"></a>Echo area<br />
 <div class="outline-text-5" id="text-1-3-1-5">
 <ul class="org-ul">
 <li><p>
@@ -495,7 +496,7 @@ can always get out of <b>minibuffer</b> by typing in
 </div>
 
 <ol class="org-ol">
-<li><a id="org6275ca8"></a>Minibuffer<br />
+<li><a id="org718be52"></a>Minibuffer<br />
 <div class="outline-text-6" id="text-1-3-1-5-1">
 <ul class="org-ul">
 <li>Completion</li>
@@ -536,27 +537,162 @@ History
 </div>
 </div>
 
-<div id="outline-container-org2853961" class="outline-3">
-<h3 id="org2853961"><span class="section-number-3">1.4</span> Editing elements</h3>
+<div id="outline-container-orgc3b9110" class="outline-3">
+<h3 id="orgc3b9110"><span class="section-number-3">1.4</span> Editing elements</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org73e14a6" class="outline-4">
-<h4 id="org73e14a6"><span class="section-number-4">1.4.1</span> <b>Point</b>: a basic conception of cursor</h4>
+<div id="outline-container-orgacf5159" class="outline-4">
+<h4 id="orgacf5159"><span class="section-number-4">1.4.1</span> <b>Point</b>: a basic conception of cursor</h4>
 </div>
-<div id="outline-container-org4415686" class="outline-4">
-<h4 id="org4415686"><span class="section-number-4">1.4.2</span> <b>Mark</b></h4>
-</div>
-<div id="outline-container-org5c23e5b" class="outline-4">
-<h4 id="org5c23e5b"><span class="section-number-4">1.4.3</span> <b>Region</b></h4>
+<div id="outline-container-org9084df3" class="outline-4">
+<h4 id="org9084df3"><span class="section-number-4">1.4.2</span> <b>Mark</b></h4>
+<div class="outline-text-4" id="text-1-4-2">
+<ul class="org-ul">
+<li><p>
+<b>Setting mark</b> (Very useful:)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-SPC</td>
+<td class="org-left">Set mark at point and activate</td>
+</tr>
+
+<tr>
+<td class="org-left">C-@</td>
+<td class="org-left">same as above</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-x</td>
+<td class="org-left">C-SPC then exchange last mark with point</td>
+</tr>
+
+<tr>
+<td class="org-left">M-@</td>
+<td class="org-left">(mark-word)mark end of next word</td>
+</tr>
+
+<tr>
+<td class="org-left">M-h</td>
+<td class="org-left">point =&gt; begining of para and mark end of para</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-p</td>
+<td class="org-left">point =&gt; begining of page and mark end of page</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x h</td>
+<td class="org-left">point =&gt; begining of buff and mark end of buff</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p>
+<b>Mark Ring</b>  
+Every buffer has a <i>mark ring</i>.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-SPC C-SPC</td>
+<td class="org-left">set mark without activating it</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u</td>
+<td class="org-left">C-SPC =&gt; Jump to previous mark</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgb1ce382" class="outline-3">
-<h3 id="orgb1ce382"><span class="section-number-3">1.5</span> Charactors, Keys and Commands</h3>
+<div id="outline-container-orgf30987f" class="outline-4">
+<h4 id="orgf30987f"><span class="section-number-4">1.4.3</span> <b>Region</b></h4>
+<div class="outline-text-4" id="text-1-4-3">
+<ul class="org-ul">
+<li><p>
+Operations on region
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-w</td>
+<td class="org-left">Kill it</td>
+</tr>
+
+<tr>
+<td class="org-left">M-w</td>
+<td class="org-left">Copy it</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-[lu]</td>
+<td class="org-left">Convert case:(some how disabled)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-/</td>
+<td class="org-left">Undo within</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x TAB</td>
+<td class="org-left">Indent</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-\</td>
+<td class="org-left">same as above</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92b56ce" class="outline-4">
+<h4 id="org92b56ce"><span class="section-number-4">1.4.4</span> <b>Ring</b></h4>
+<div class="outline-text-4" id="text-1-4-4">
+</div>
+<ol class="org-ol">
+<li><a id="orge75387d"></a>Mark Ring<br /></li>
+<li><a id="org72452e3"></a>Kill Ring<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga0d3219" class="outline-3">
+<h3 id="orga0d3219"><span class="section-number-3">1.5</span> Charactors, Keys and Commands</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org6e02eac" class="outline-4">
-<h4 id="org6e02eac"><span class="section-number-4">1.5.1</span> Charactors</h4>
+<div id="outline-container-orgbf3866e" class="outline-4">
+<h4 id="orgbf3866e"><span class="section-number-4">1.5.1</span> Charactors</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <pre class="example">
 Control =&gt; Ctrl
@@ -584,8 +720,8 @@ ESC C-a === C-M-a
 </div>
 </div>
 
-<div id="outline-container-orge70a2f5" class="outline-4">
-<h4 id="orge70a2f5"><span class="section-number-4">1.5.2</span> Keys</h4>
+<div id="outline-container-orgafbc4be" class="outline-4">
+<h4 id="orgafbc4be"><span class="section-number-4">1.5.2</span> Keys</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <ul class="org-ul">
 <li>Complete key</li>
@@ -638,12 +774,12 @@ Prefix key
 </div>
 </div>
 
-<div id="outline-container-org4b20e95" class="outline-4">
-<h4 id="org4b20e95"><span class="section-number-4">1.5.3</span> Commands</h4>
+<div id="outline-container-org439e72a" class="outline-4">
+<h4 id="org439e72a"><span class="section-number-4">1.5.3</span> Commands</h4>
 <div class="outline-text-4" id="text-1-5-3">
 </div>
 <ol class="org-ol">
-<li><a id="org86987db"></a>Inserting Text<br />
+<li><a id="org0ef0bff"></a>Inserting Text<br />
 <div class="outline-text-5" id="text-1-5-3-1">
 <ul class="org-ul">
 <li><p>
@@ -705,7 +841,7 @@ insert with octal number
 </div>
 </li>
 
-<li><a id="org7f93acd"></a>Changing location of Point<br />
+<li><a id="org0d80291"></a>Changing location of Point<br />
 <div class="outline-text-5" id="text-1-5-3-2">
 <ul class="org-ul">
 <li><p>
@@ -1022,7 +1158,7 @@ Global jump
 </div>
 </li>
 
-<li><a id="orgcceb12f"></a>Erasing Text<br />
+<li><a id="orgb117bc4"></a>Erasing Text<br />
 <div class="outline-text-5" id="text-1-5-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1075,26 +1211,82 @@ Global jump
 // all forward
 </p>
 
-<pre class="example">
-C-k
-kill-line
-</pre>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-<pre class="example">
-M-DEL
-M-BACKSPACE
-backward-kill-word
-</pre>
 
-<pre class="example">
-C-x C-o
-delete-blank-lines
-</pre>
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">kill-line</td>
+</tr>
+
+<tr>
+<td class="org-left">M-DEL</td>
+<td class="org-left">backward-kill-word</td>
+</tr>
+
+<tr>
+<td class="org-left">M-BACKSPACE</td>
+<td class="org-left">same</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-o</td>
+<td class="org-left">delete-blank-lines</td>
+</tr>
+
+<tr>
+<td class="org-left">M-^</td>
+<td class="org-left">(delete indentation)Join two lines</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
 </div>
 </li>
 
-<li><a id="orgcd1484b"></a>Undoing<br />
+<li><a id="orgf5479b9"></a>Yanking<br />
 <div class="outline-text-5" id="text-1-5-3-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-y</td>
+<td class="org-left">Yank last kill into point</td>
+</tr>
+
+<tr>
+<td class="org-left">M-y</td>
+<td class="org-left">Replace text with last killed</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="orgea924ec"></a>Undoing<br />
+<div class="outline-text-5" id="text-1-5-3-5">
 <pre class="example">
 C-/
 C-x u
@@ -1103,8 +1295,8 @@ C-_
 </div>
 </li>
 
-<li><a id="orgd8eb545"></a>Files<br />
-<div class="outline-text-5" id="text-1-5-3-5">
+<li><a id="org7399e11"></a>Files<br />
+<div class="outline-text-5" id="text-1-5-3-6">
 <pre class="example">
 C-x C-f        C-x C-s
 find-file      save-buffer
@@ -1112,8 +1304,8 @@ find-file      save-buffer
 </div>
 </li>
 
-<li><a id="org0a28c56"></a>Help<br />
-<div class="outline-text-5" id="text-1-5-3-6">
+<li><a id="org54d66d9"></a>Help<br />
+<div class="outline-text-5" id="text-1-5-3-7">
 <pre class="example">
 C-h k
 describe-key
@@ -1122,8 +1314,8 @@ describe-key
 </div>
 </li>
 
-<li><a id="orgb0e841b"></a>Information<br />
-<div class="outline-text-5" id="text-1-5-3-7">
+<li><a id="org61eceae"></a>Information<br />
+<div class="outline-text-5" id="text-1-5-3-8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1163,8 +1355,8 @@ describe-key
 </div>
 </li>
 
-<li><a id="org34eba03"></a>Numeric Arguments<br />
-<div class="outline-text-5" id="text-1-5-3-8">
+<li><a id="orgeb28b15"></a>Numeric Arguments<br />
+<div class="outline-text-5" id="text-1-5-3-9">
 <pre class="example">
 M-&lt;number&gt; &lt;other keys&gt;
 e.g. M-5 C-f: forward 5 chars
@@ -1172,8 +1364,8 @@ e.g. M-5 C-f: forward 5 chars
 </div>
 </li>
 
-<li><a id="org935c548"></a>Repeating Commands<br />
-<div class="outline-text-5" id="text-1-5-3-9">
+<li><a id="orgae0b50b"></a>Repeating Commands<br />
+<div class="outline-text-5" id="text-1-5-3-10">
 <pre class="example">
 C-x z
 </pre>
@@ -1184,19 +1376,19 @@ C-x z
 </div>
 </div>
 
-<div id="outline-container-orgedb55b2" class="outline-2">
-<h2 id="orgedb55b2"><span class="section-number-2">2</span> Flexible Emacs Lisp</h2>
+<div id="outline-container-org3816c48" class="outline-2">
+<h2 id="org3816c48"><span class="section-number-2">2</span> Emacs Lisp</h2>
 </div>
 
 
-<div id="outline-container-org161b7f4" class="outline-2">
-<h2 id="org161b7f4"><span class="section-number-2">3</span> Awesome org-mode</h2>
+<div id="outline-container-org1ad2802" class="outline-2">
+<h2 id="org1ad2802"><span class="section-number-2">3</span> Awesome org-mode</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-10-02 三 00:00</p>
 <p class="author">Author: Comcx</p>
-<p class="date">Created: 2019-10-03 四 10:35</p>
+<p class="date">Created: 2019-10-03 四 14:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
