@@ -596,10 +596,25 @@ refer to /SICP/
 | (pcase clause)    |   |
 
 * Awesome Org-mode
+** Outline
+| C-c C-n | Next heading                     | org-next-visible-heading     |
+| C-c C-p | Previous heading                 | org-previous-visible-heading |
+| C-c C-f | Next heading same level          | org-forward-same-level       |
+| C-c C-b | Previous heading same level      | org-backward-same-level      |
+| C-c C-u | Backward to higher level heading | outline-up-heading           |
 
+** Elements
+*** Drawer
+#+BEGIN_SRC 
+C-c C-x d
+org-insert-drawer  
+#+END_SRC
 
-it's me!
-
-
+*** Block
+*** Footnote
+*** Table
+*** Link
+*** TODO
+*** Tag
 
 
