@@ -15,10 +15,15 @@
 :END:
 
 
-* DONE Add Two Numbers
+* Weapons
 
 
-** Description
+
+* Dragons [11/13]
+
+** DONE Add Two Numbers
+
+*** Description
 
 You are given two non-empty linked lists representing two non-negative integers. 
 The digits are stored in reverse order and each of their nodes contain a single digit. 
@@ -33,7 +38,7 @@ Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 #+END_SRC
 
-** Solution
+*** Solution
 
 #+BEGIN_SRC C++
 
@@ -77,10 +82,9 @@ public:
 #+END_SRC
 
 
+** DONE Longest Substring Without Repeating Characters
 
-* DONE Longest Substring Without Repeating Characters
-
-** Description
+*** Description
 
 Given a string, find the length of the longest substring without repeating characters.
 #+BEGIN_SRC
@@ -101,7 +105,7 @@ Explanation: The answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 #+END_SRC
 
-** Solution
+*** Solution
 
 #+BEGIN_SRC c++
 //O(nlgn)?? or better?
@@ -143,10 +147,9 @@ int lengthOfLongestSubstring(string s) {
 
 #+END_SRC
 
+** DONE Find The Parity Outlier
 
-* DONE Find The Parity Outlier
-
-** Description
+*** Description
 You are given an array (which will have a length of at least 3, 
 but could be very large) containing integers. 
 The array is either entirely comprised of odd integers or 
@@ -162,7 +165,7 @@ Should return: 11 (the only odd number)
 Should return: 160 (the only even number)
 #+END_SRC
 
-** Solution
+*** Solution
 
 #+BEGIN_SRC C++
 int FindOutlier(std::vector<int> arr)
@@ -183,21 +186,19 @@ int FindOutlier(std::vector<int> arr)
 #+END_SRC
 
 
+** NEXT Cycle detection
 
-* NEXT Cycle detection
-
-** Extant
+*** Extant
 *** Floyd algorithm
 
 
 *** Bernt's algorithm(The Teleporting Turtle)
 
-** Experiment
+*** Experiment
 
+** DONE Factorial decomposition
 
-* DONE Factorial decomposition
-
-** Description
+*** Description
 The aim of the kata is to decompose n! (factorial n) into its prime factors.
 #+BEGIN_SRC 
 Examples:
@@ -217,7 +218,7 @@ Prime numbers should be in increasing order. When the exponent of a prime is 1 d
   its prime factors in increasing order of the primes, as a string.
 - factorial can be a very big number (4000! has 12674 digits, n will go from 300 to 4000).
 
-** Solution
+*** Solution
 #+BEGIN_SRC c++
 #include <string>
 #include <map>
@@ -255,10 +256,9 @@ string decomp(int n) {
 }
 #+END_SRC
 
+** DONE Counting Change Combinations
 
-* DONE Counting Change Combinations
-
-** Description
+*** Description
 Write a function that counts how many different ways you can make change for an amount of money, given an array of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2:
 
 1+1+1+1, 1+1+2, 2+2.
@@ -277,7 +277,7 @@ Your function should take an amount to change and an array of unique denominatio
   count_change(11, {5,7}) // => 0
 #+END_SRC
 
-** Solution
+*** Solution
 
 #+BEGIN_SRC c++
 
@@ -342,10 +342,9 @@ countChange(unsigned money, const std::vector<unsigned>& coins) {
 #+END_SRC
 
 
+** DONE Longest Palindromic Substring
 
-* DONE Longest Palindromic Substring
-
-** Description
+*** Description
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 
 Example 1:
@@ -361,7 +360,7 @@ Input: "cbbd"
 Output: "bb"
 #+END_SRC
 
-** Solution
+*** Solution
 #+BEGIN_SRC c++
 
 //DP method
@@ -384,10 +383,9 @@ string longestPalindrome(string s) {
 
 #+END_SRC
 
+** DONE ZigZag Conversion
 
-* DONE ZigZag Conversion
-
-** Description
+*** Description
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 #+BEGIN_SRC
 P   A   H   N
@@ -419,8 +417,7 @@ Y A   H R
 P     I
 #+END_SRC
 
-
-** Solution
+*** Solution
 
 #+BEGIN_SRC c++
 
@@ -451,10 +448,9 @@ string Solution::convert(string s, int numRows) {
 
 #+END_SRC
 
+** DONE Maximum Subarray
 
-* DONE Maximum Subarray
-
-** Description
+*** Description
 Given an integer array nums, 
 find the contiguous subarray (containing at least one number) 
 which has the largest sum and return its sum.
@@ -470,7 +466,7 @@ If you have figured out the O(n) solution,
 try coding another solution using the divide and conquer approach, 
 which is more subtle.
 
-** Solution
+*** Solution
 #+BEGIN_SRC C++
 
 int Solution::maxSubArray(vector<int>& nums) {
@@ -485,10 +481,9 @@ int Solution::maxSubArray(vector<int>& nums) {
 
 #+END_SRC
 
+** DONE Climbing Stairs
 
-* DONE Climbing Stairs
-
-** Description
+*** Description
 You are climbing a stair case. It takes n steps to reach to the top.
 
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
@@ -513,7 +508,7 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 #+END_SRC
 
-** Solution
+*** Solution
 #+BEGIN_SRC c++
 
 int Solution::climbStairs(int n) {
@@ -528,10 +523,9 @@ int Solution::climbStairs(int n) {
 
 #+END_SRC
 
+** DONE Regular Expression Matching
 
-* DONE Regular Expression Matching
-
-** Description
+*** Description
 Given an input string (s) and a pattern (p), 
 implement regular expression matching with support for '.' and '*'.
 
@@ -583,7 +577,7 @@ p = "mis*is*p*."
 Output: false
 #+END_SRC
 
-** Solution
+*** Solution
 #+BEGIN_SRC c++
 bool Solution::isMatch(string s, string p) {
   
@@ -599,10 +593,9 @@ bool Solution::isMatch(string s, string p) {
 #+END_SRC
 
 
+** DONE Wildcard Matching
 
-* DONE Wildcard Matching
-
-** Dexcription
+*** Description
 Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
 #+BEGIN_SRC
 '?' Matches any single character.
@@ -649,7 +642,7 @@ p = "a*c?b"
 Output: false
 #+END_SRC
 
-** Solution
+*** Solution
 #+BEGIN_SRC C++
 class Solution {
 public:
@@ -677,6 +670,8 @@ bool Solution::isMatch(string s, string p) {
 }
 
 #+END_SRC
+
+** TODO ...
 
 
 

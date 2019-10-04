@@ -4,7 +4,9 @@
 
 :IDEA:
 Hello, I am reading emacs official guide
-Here I record things I encountered
+Here I record things I encountered.
+
+Well, This is very fundamental and basic though...
 :END:
 
 * Basics
@@ -616,5 +618,7 @@ org-insert-drawer
 *** Link
 *** TODO
 *** Tag
+** Modes
+
 
 
