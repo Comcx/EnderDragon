@@ -7,7 +7,7 @@ Hello, I am reading emacs official guide
 Here I record things I encountered
 :END:
 
-* Basic operation
+* Basics
 
 ** Introduction
 *GNU Emacs*
@@ -469,8 +469,13 @@ M-x follow-mode
 
 ** Modes
 *** Major Modes
+- Switch
+  #+BEGIN_SRC 
+  M-x <name>-mode
+  #+END_SRC
 
 *** Minor Modes
+- Hooks
 
 * Emacs Lisp
 

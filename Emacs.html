@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-03 四 22:55 -->
+<!-- 2019-10-04 五 10:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Super Cheetsheet</title>
@@ -234,53 +234,53 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org29a829b">1. Basic operation</a>
+<li><a href="#org3c961cb">1. Basics</a>
 <ul>
-<li><a href="#org15fb1da">1.1. Introduction</a>
+<li><a href="#org11b92b3">1.1. Introduction</a>
 <ul>
-<li><a href="#orgae154f5">1.1.1. Advancement</a></li>
+<li><a href="#orgdd8234f">1.1.1. Advancement</a></li>
 </ul>
 </li>
-<li><a href="#org8c45781">1.2. Getting started</a>
+<li><a href="#org407a3ba">1.2. Getting started</a>
 <ul>
-<li><a href="#orgf168a21">1.2.1. Entering Emacs</a></li>
-<li><a href="#org6d094b9">1.2.2. Exiting Emacs</a></li>
+<li><a href="#orgef92aa6">1.2.1. Entering Emacs</a></li>
+<li><a href="#org761318f">1.2.2. Exiting Emacs</a></li>
 </ul>
 </li>
-<li><a href="#orgfe427bb">1.3. Screen organization</a>
+<li><a href="#org61b6363">1.3. Screen organization</a>
 <ul>
-<li><a href="#orgcaff3e6">1.3.1. The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</a></li>
+<li><a href="#org4d2bbd4">1.3.1. The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</a></li>
 </ul>
 </li>
-<li><a href="#org90c2301">1.4. Editing elements</a>
+<li><a href="#org8938d66">1.4. Editing elements</a>
 <ul>
-<li><a href="#orgd53ab45">1.4.1. <b>Charactors</b></a></li>
-<li><a href="#orgbbb1891">1.4.2. <b>Point</b></a></li>
-<li><a href="#org6e1eaa7">1.4.3. <b>Mark</b></a></li>
-<li><a href="#org84d2672">1.4.4. <b>Region</b></a></li>
-<li><a href="#org9e2eb2f">1.4.5. <b>Ring</b></a></li>
-<li><a href="#org226ef95">1.4.6. <b>Regex</b></a></li>
-<li><a href="#orge27abb3">1.4.7. <b>Buffer</b></a></li>
-<li><a href="#orgadf6efd">1.4.8. <b>Window</b></a></li>
-<li><a href="#org3018d9d">1.4.9. <b>Frame</b></a></li>
+<li><a href="#org7fb7a39">1.4.1. <b>Charactors</b></a></li>
+<li><a href="#org945ca8c">1.4.2. <b>Point</b></a></li>
+<li><a href="#org4f5f462">1.4.3. <b>Mark</b></a></li>
+<li><a href="#org21f132e">1.4.4. <b>Region</b></a></li>
+<li><a href="#orge88c08f">1.4.5. <b>Ring</b></a></li>
+<li><a href="#org138d8ff">1.4.6. <b>Regex</b></a></li>
+<li><a href="#orgb04ec15">1.4.7. <b>Buffer</b></a></li>
+<li><a href="#org133dfec">1.4.8. <b>Window</b></a></li>
+<li><a href="#org52fa867">1.4.9. <b>Frame</b></a></li>
 </ul>
 </li>
-<li><a href="#org212a214">1.5. Keys and Commands</a>
+<li><a href="#orgcb0cb9b">1.5. Keys and Commands</a>
 <ul>
-<li><a href="#orgc790f44">1.5.1. Keys</a></li>
-<li><a href="#org0f5e11b">1.5.2. Commands</a></li>
+<li><a href="#orgc7a4339">1.5.1. Keys</a></li>
+<li><a href="#orgd55addf">1.5.2. Commands</a></li>
 </ul>
 </li>
-<li><a href="#org9bfc3b4">1.6. Modes</a>
+<li><a href="#org42935ee">1.6. Modes</a>
 <ul>
-<li><a href="#orgd5acd0a">1.6.1. Major Modes</a></li>
-<li><a href="#orge8a6658">1.6.2. Minor Modes</a></li>
+<li><a href="#orgf8565d2">1.6.1. Major Modes</a></li>
+<li><a href="#org1ad7b58">1.6.2. Minor Modes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8aca6cf">2. Emacs Lisp</a></li>
-<li><a href="#org8c5ffac">3. Awesome Org-mode</a></li>
+<li><a href="#orgd8d2442">2. Emacs Lisp</a></li>
+<li><a href="#orgb90ab8d">3. Awesome Org-mode</a></li>
 </ul>
 </div>
 </div>
@@ -289,19 +289,19 @@ Hello, I am reading emacs official guide
 Here I record things I encountered
 </p>
 
-<div id="outline-container-org29a829b" class="outline-2">
-<h2 id="org29a829b"><span class="section-number-2">1</span> Basic operation</h2>
+<div id="outline-container-org3c961cb" class="outline-2">
+<h2 id="org3c961cb"><span class="section-number-2">1</span> Basics</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org15fb1da" class="outline-3">
-<h3 id="org15fb1da"><span class="section-number-3">1.1</span> Introduction</h3>
+<div id="outline-container-org11b92b3" class="outline-3">
+<h3 id="org11b92b3"><span class="section-number-3">1.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>GNU Emacs</b>
 </p>
 </div>
-<div id="outline-container-orgae154f5" class="outline-4">
-<h4 id="orgae154f5"><span class="section-number-4">1.1.1</span> Advancement</h4>
+<div id="outline-container-orgdd8234f" class="outline-4">
+<h4 id="orgdd8234f"><span class="section-number-4">1.1.1</span> Advancement</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Controling of processes</li>
@@ -314,12 +314,12 @@ Here I record things I encountered
 </div>
 </div>
 
-<div id="outline-container-org8c45781" class="outline-3">
-<h3 id="org8c45781"><span class="section-number-3">1.2</span> Getting started</h3>
+<div id="outline-container-org407a3ba" class="outline-3">
+<h3 id="org407a3ba"><span class="section-number-3">1.2</span> Getting started</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orgf168a21" class="outline-4">
-<h4 id="orgf168a21"><span class="section-number-4">1.2.1</span> Entering Emacs</h4>
+<div id="outline-container-orgef92aa6" class="outline-4">
+<h4 id="orgef92aa6"><span class="section-number-4">1.2.1</span> Entering Emacs</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Just type
@@ -361,8 +361,8 @@ to a file path
 </div>
 </div>
 
-<div id="outline-container-org6d094b9" class="outline-4">
-<h4 id="org6d094b9"><span class="section-number-4">1.2.2</span> Exiting Emacs</h4>
+<div id="outline-container-org761318f" class="outline-4">
+<h4 id="org761318f"><span class="section-number-4">1.2.2</span> Exiting Emacs</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>C-x C-c : Kill Emacs</li>
@@ -404,19 +404,19 @@ to a file path
 </div>
 </div>
 
-<div id="outline-container-orgfe427bb" class="outline-3">
-<h3 id="orgfe427bb"><span class="section-number-3">1.3</span> Screen organization</h3>
+<div id="outline-container-org61b6363" class="outline-3">
+<h3 id="org61b6363"><span class="section-number-3">1.3</span> Screen organization</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgcaff3e6" class="outline-4">
-<h4 id="orgcaff3e6"><span class="section-number-4">1.3.1</span> The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</h4>
+<div id="outline-container-org4d2bbd4" class="outline-4">
+<h4 id="org4d2bbd4"><span class="section-number-4">1.3.1</span> The <b>Frame</b>: a graphic window or terminal screen occupied by emacs.</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Contains several <b>Regions</b>
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org6cb8d8d"></a>Menu bar<br />
+<li><a id="org5f2c4f6"></a>Menu bar<br />
 <div class="outline-text-5" id="text-1-3-1-1">
 <pre class="example">
 F10
@@ -425,15 +425,15 @@ to open menu(menu-bar-open)
 </div>
 </li>
 
-<li><a id="org3d23dd9"></a>Tool bar<br /></li>
-<li><a id="org6c0ec3d"></a>Window(text area): display <i>buffer</i><br />
+<li><a id="org16d0371"></a>Tool bar<br /></li>
+<li><a id="orga61c2f5"></a>Window(text area): display <i>buffer</i><br />
 <div class="outline-text-5" id="text-1-3-1-3">
 <p>
 at least one selected at any time
 </p>
 </div>
 </li>
-<li><a id="org2c1a5ca"></a>Mode line<br />
+<li><a id="org5180813"></a>Mode line<br />
 <div class="outline-text-5" id="text-1-3-1-4">
 <p>
 Describe current buffer
@@ -473,7 +473,7 @@ where
 </div>
 </li>
 
-<li><a id="org1665e9f"></a>Echo area<br />
+<li><a id="org20c4811"></a>Echo area<br />
 <div class="outline-text-5" id="text-1-3-1-5">
 <ul class="org-ul">
 <li><p>
@@ -506,7 +506,7 @@ can always get out of <b>minibuffer</b> by typing in
 </div>
 
 <ol class="org-ol">
-<li><a id="org52fc21a"></a>Minibuffer<br />
+<li><a id="orgdacb727"></a>Minibuffer<br />
 <div class="outline-text-6" id="text-1-3-1-5-1">
 <ul class="org-ul">
 <li>Completion</li>
@@ -547,12 +547,12 @@ History
 </div>
 </div>
 
-<div id="outline-container-org90c2301" class="outline-3">
-<h3 id="org90c2301"><span class="section-number-3">1.4</span> Editing elements</h3>
+<div id="outline-container-org8938d66" class="outline-3">
+<h3 id="org8938d66"><span class="section-number-3">1.4</span> Editing elements</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orgd53ab45" class="outline-4">
-<h4 id="orgd53ab45"><span class="section-number-4">1.4.1</span> <b>Charactors</b></h4>
+<div id="outline-container-org7fb7a39" class="outline-4">
+<h4 id="org7fb7a39"><span class="section-number-4">1.4.1</span> <b>Charactors</b></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <pre class="example">
 Control =&gt; Ctrl
@@ -580,12 +580,12 @@ ESC C-a === C-M-a
 </div>
 
 <ol class="org-ol">
-<li><a id="orga55754f"></a>Charactor Set<br /></li>
+<li><a id="org1223c98"></a>Charactor Set<br /></li>
 </ol>
 </div>
 
-<div id="outline-container-orgbbb1891" class="outline-4">
-<h4 id="orgbbb1891"><span class="section-number-4">1.4.2</span> <b>Point</b></h4>
+<div id="outline-container-org945ca8c" class="outline-4">
+<h4 id="org945ca8c"><span class="section-number-4">1.4.2</span> <b>Point</b></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <pre class="example">
 a basic conception of cursor
@@ -593,8 +593,8 @@ a basic conception of cursor
 </pre>
 </div>
 </div>
-<div id="outline-container-org6e1eaa7" class="outline-4">
-<h4 id="org6e1eaa7"><span class="section-number-4">1.4.3</span> <b>Mark</b></h4>
+<div id="outline-container-org4f5f462" class="outline-4">
+<h4 id="org4f5f462"><span class="section-number-4">1.4.3</span> <b>Mark</b></h4>
 <div class="outline-text-4" id="text-1-4-3">
 <ul class="org-ul">
 <li><p>
@@ -674,8 +674,8 @@ Every buffer has a <i>mark ring</i>.
 </div>
 </div>
 
-<div id="outline-container-org84d2672" class="outline-4">
-<h4 id="org84d2672"><span class="section-number-4">1.4.4</span> <b>Region</b></h4>
+<div id="outline-container-org21f132e" class="outline-4">
+<h4 id="org21f132e"><span class="section-number-4">1.4.4</span> <b>Region</b></h4>
 <div class="outline-text-4" id="text-1-4-4">
 <ul class="org-ul">
 <li><p>
@@ -725,21 +725,21 @@ Operations on region
 </div>
 </div>
 
-<div id="outline-container-org9e2eb2f" class="outline-4">
-<h4 id="org9e2eb2f"><span class="section-number-4">1.4.5</span> <b>Ring</b></h4>
+<div id="outline-container-orge88c08f" class="outline-4">
+<h4 id="orge88c08f"><span class="section-number-4">1.4.5</span> <b>Ring</b></h4>
 <div class="outline-text-4" id="text-1-4-5">
 </div>
 <ol class="org-ol">
-<li><a id="org00f2576"></a>Mark Ring<br /></li>
-<li><a id="org6dbd3ab"></a>Kill Ring<br /></li>
+<li><a id="orga8f2a66"></a>Mark Ring<br /></li>
+<li><a id="org418e9b3"></a>Kill Ring<br /></li>
 </ol>
 </div>
-<div id="outline-container-org226ef95" class="outline-4">
-<h4 id="org226ef95"><span class="section-number-4">1.4.6</span> <b>Regex</b></h4>
+<div id="outline-container-org138d8ff" class="outline-4">
+<h4 id="org138d8ff"><span class="section-number-4">1.4.6</span> <b>Regex</b></h4>
 </div>
 
-<div id="outline-container-orge27abb3" class="outline-4">
-<h4 id="orge27abb3"><span class="section-number-4">1.4.7</span> <b>Buffer</b></h4>
+<div id="outline-container-orgb04ec15" class="outline-4">
+<h4 id="orgb04ec15"><span class="section-number-4">1.4.7</span> <b>Buffer</b></h4>
 <div class="outline-text-4" id="text-1-4-7">
 <ul class="org-ul">
 <li><p>
@@ -809,8 +809,8 @@ Killing
 </div>
 </div>
 
-<div id="outline-container-orgadf6efd" class="outline-4">
-<h4 id="orgadf6efd"><span class="section-number-4">1.4.8</span> <b>Window</b></h4>
+<div id="outline-container-org133dfec" class="outline-4">
+<h4 id="org133dfec"><span class="section-number-4">1.4.8</span> <b>Window</b></h4>
 <div class="outline-text-4" id="text-1-4-8">
 <ul class="org-ul">
 <li><p>
@@ -890,8 +890,8 @@ Resizing
 </div>
 </div>
 
-<div id="outline-container-org3018d9d" class="outline-4">
-<h4 id="org3018d9d"><span class="section-number-4">1.4.9</span> <b>Frame</b></h4>
+<div id="outline-container-org52fa867" class="outline-4">
+<h4 id="org52fa867"><span class="section-number-4">1.4.9</span> <b>Frame</b></h4>
 <div class="outline-text-4" id="text-1-4-9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -927,12 +927,12 @@ Resizing
 </div>
 </div>
 
-<div id="outline-container-org212a214" class="outline-3">
-<h3 id="org212a214"><span class="section-number-3">1.5</span> Keys and Commands</h3>
+<div id="outline-container-orgcb0cb9b" class="outline-3">
+<h3 id="orgcb0cb9b"><span class="section-number-3">1.5</span> Keys and Commands</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-orgc790f44" class="outline-4">
-<h4 id="orgc790f44"><span class="section-number-4">1.5.1</span> Keys</h4>
+<div id="outline-container-orgc7a4339" class="outline-4">
+<h4 id="orgc7a4339"><span class="section-number-4">1.5.1</span> Keys</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <ul class="org-ul">
 <li>Complete key</li>
@@ -985,7 +985,7 @@ Prefix key
 </div>
 
 <ol class="org-ol">
-<li><a id="org0e2e18a"></a>Key Macros<br />
+<li><a id="org9cdf3e8"></a>Key Macros<br />
 <div class="outline-text-5" id="text-1-5-1-1">
 <p>
 Abstraction of Composition of keys!
@@ -1054,14 +1054,14 @@ Execute
 </ol>
 </div>
 
-<div id="outline-container-org0f5e11b" class="outline-4">
-<h4 id="org0f5e11b"><span class="section-number-4">1.5.2</span> Commands</h4>
+<div id="outline-container-orgd55addf" class="outline-4">
+<h4 id="orgd55addf"><span class="section-number-4">1.5.2</span> Commands</h4>
 <div class="outline-text-4" id="text-1-5-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgec2286d"></a>Editing<br />
+<li><a id="org10c6d3e"></a>Editing<br />
 <ol class="org-ol">
-<li><a id="org81f4d3d"></a>Inserting Text<br />
+<li><a id="org7cd6b95"></a>Inserting Text<br />
 <div class="outline-text-6" id="text-1-5-2-1-1">
 <ul class="org-ul">
 <li><p>
@@ -1123,7 +1123,7 @@ insert with octal number
 </div>
 </li>
 
-<li><a id="org654d2ef"></a>Changing location of Point<br />
+<li><a id="orga0e2206"></a>Changing location of Point<br />
 <div class="outline-text-6" id="text-1-5-2-1-2">
 <ul class="org-ul">
 <li><p>
@@ -1440,7 +1440,7 @@ Global jump
 </div>
 </li>
 
-<li><a id="org11ad275"></a>Erasing Text<br />
+<li><a id="org89eaa58"></a>Erasing Text<br />
 <div class="outline-text-6" id="text-1-5-2-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1542,7 +1542,7 @@ Global jump
 </div>
 </li>
 
-<li><a id="org846b741"></a>Yanking<br />
+<li><a id="org5ee5148"></a>Yanking<br />
 <div class="outline-text-6" id="text-1-5-2-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1570,7 +1570,7 @@ Global jump
 </div>
 </li>
 
-<li><a id="org6c051d5"></a>Undoing<br />
+<li><a id="org4bf6eec"></a>Undoing<br />
 <div class="outline-text-6" id="text-1-5-2-1-5">
 <pre class="example">
 C-/
@@ -1582,7 +1582,7 @@ C-_
 </ol>
 </li>
 
-<li><a id="org4d8f4ed"></a>Files<br />
+<li><a id="org96d5d81"></a>Files<br />
 <div class="outline-text-5" id="text-1-5-2-2">
 <ul class="org-ul">
 <li><p>
@@ -1671,7 +1671,7 @@ Reverting
 </div>
 </li>
 
-<li><a id="orgeba4e68"></a>Help<br />
+<li><a id="orgef7d999"></a>Help<br />
 <div class="outline-text-5" id="text-1-5-2-3">
 <pre class="example">
 C-h k
@@ -1681,7 +1681,7 @@ describe-key
 </div>
 </li>
 
-<li><a id="org67d4c77"></a>Information<br />
+<li><a id="org6e6293f"></a>Information<br />
 <div class="outline-text-5" id="text-1-5-2-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1722,9 +1722,9 @@ describe-key
 </div>
 </li>
 
-<li><a id="orgddb1b88"></a>Meta<br />
+<li><a id="org38eab01"></a>Meta<br />
 <ol class="org-ol">
-<li><a id="org87508a2"></a>Numeric Arguments<br />
+<li><a id="orgcf64bef"></a>Numeric Arguments<br />
 <div class="outline-text-6" id="text-1-5-2-5-1">
 <pre class="example">
 M-&lt;number&gt; &lt;other keys&gt;
@@ -1733,7 +1733,7 @@ e.g. M-5 C-f: forward 5 chars
 </div>
 </li>
 
-<li><a id="org98a9903"></a>Repeating Commands<br />
+<li><a id="orgd07fd18"></a>Repeating Commands<br />
 <div class="outline-text-6" id="text-1-5-2-5-2">
 <pre class="example">
 C-x z
@@ -1743,9 +1743,9 @@ C-x z
 </ol>
 </li>
 
-<li><a id="org71d2fb0"></a>Display Controlling<br />
+<li><a id="orgab0fb91"></a>Display Controlling<br />
 <ol class="org-ol">
-<li><a id="org8c52211"></a>Scrolling<br />
+<li><a id="orgcc97a17"></a>Scrolling<br />
 <div class="outline-text-6" id="text-1-5-2-6-1">
 <ul class="org-ul">
 <li><p>
@@ -1809,7 +1809,7 @@ Horizontal(somehow disabled by default!)
 </div>
 </li>
 
-<li><a id="org1e8a0df"></a>Recentering<br />
+<li><a id="org553c5c3"></a>Recentering<br />
 <div class="outline-text-6" id="text-1-5-2-6-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1840,7 +1840,7 @@ Horizontal(somehow disabled by default!)
 </div>
 </li>
 
-<li><a id="org3503875"></a>Narrowing<br />
+<li><a id="orgccb0ba8"></a>Narrowing<br />
 <div class="outline-text-6" id="text-1-5-2-6-3">
 <p>
 :(Disabled by default!)
@@ -1848,7 +1848,7 @@ Horizontal(somehow disabled by default!)
 </div>
 </li>
 
-<li><a id="org5264793"></a>Modes<br />
+<li><a id="org94cc94a"></a>Modes<br />
 <div class="outline-text-6" id="text-1-5-2-6-4">
 <ul class="org-ul">
 <li>View mode(read-only)</li>
@@ -1862,7 +1862,7 @@ M-x follow-mode
 </div>
 </li>
 
-<li><a id="org2c97533"></a>Faces<br />
+<li><a id="orgcc161e2"></a>Faces<br />
 <div class="outline-text-6" id="text-1-5-2-6-5">
 <ul class="org-ul">
 <li><p>
@@ -1926,7 +1926,7 @@ More faces visit GNU Emacs official guide
 </div>
 </li>
 
-<li><a id="orgcb77da1"></a>Scale<br />
+<li><a id="org5150199"></a>Scale<br />
 <div class="outline-text-6" id="text-1-5-2-6-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1951,11 +1951,11 @@ More faces visit GNU Emacs official guide
 </div>
 </li>
 
-<li><a id="orga306056"></a>Cursor<br /></li>
+<li><a id="org6f74541"></a>Cursor<br /></li>
 </ol>
 </li>
 
-<li><a id="orgd0b96b2"></a>Searching and Replacement<br />
+<li><a id="orgcc2b64e"></a>Searching and Replacement<br />
 <div class="outline-text-5" id="text-1-5-2-7">
 <ul class="org-ul">
 <li><p>
@@ -2028,26 +2028,41 @@ Replacement
 </div>
 </div>
 
-<div id="outline-container-org9bfc3b4" class="outline-3">
-<h3 id="org9bfc3b4"><span class="section-number-3">1.6</span> Modes</h3>
+<div id="outline-container-org42935ee" class="outline-3">
+<h3 id="org42935ee"><span class="section-number-3">1.6</span> Modes</h3>
 <div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-orgd5acd0a" class="outline-4">
-<h4 id="orgd5acd0a"><span class="section-number-4">1.6.1</span> Major Modes</h4>
+<div id="outline-container-orgf8565d2" class="outline-4">
+<h4 id="orgf8565d2"><span class="section-number-4">1.6.1</span> Major Modes</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<ul class="org-ul">
+<li><p>
+Switch
+</p>
+<pre class="example">
+  M-x &lt;name&gt;-mode
+</pre></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-orge8a6658" class="outline-4">
-<h4 id="orge8a6658"><span class="section-number-4">1.6.2</span> Minor Modes</h4>
+<div id="outline-container-org1ad7b58" class="outline-4">
+<h4 id="org1ad7b58"><span class="section-number-4">1.6.2</span> Minor Modes</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<ul class="org-ul">
+<li>Hooks</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8aca6cf" class="outline-2">
-<h2 id="org8aca6cf"><span class="section-number-2">2</span> Emacs Lisp</h2>
+<div id="outline-container-orgd8d2442" class="outline-2">
+<h2 id="orgd8d2442"><span class="section-number-2">2</span> Emacs Lisp</h2>
 </div>
 
-<div id="outline-container-org8c5ffac" class="outline-2">
-<h2 id="org8c5ffac"><span class="section-number-2">3</span> Awesome Org-mode</h2>
+<div id="outline-container-orgb90ab8d" class="outline-2">
+<h2 id="orgb90ab8d"><span class="section-number-2">3</span> Awesome Org-mode</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 it's me!
@@ -2058,7 +2073,7 @@ it's me!
 <div id="postamble" class="status">
 <p class="date">Date: 2019-10-02 三 00:00</p>
 <p class="author">Author: Comcx</p>
-<p class="date">Created: 2019-10-03 四 22:55</p>
+<p class="date">Created: 2019-10-04 五 10:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
