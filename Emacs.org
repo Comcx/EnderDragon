@@ -476,8 +476,124 @@ M-x follow-mode
 
 *** Minor Modes
 - Hooks
+- Listing
+  #+BEGIN_SRC 
+  C-h m
+  M-x describe-mode
+  #+END_SRC
 
 * Emacs Lisp
+
+** Types
+*** Basic Types
+**** Function
+**** Number
+numberp
+***** Integer
+integerp
+- Range
+#+BEGIN_SRC 
+most-positive-fixnum
+most-negative-fixnum
+#+END_SRC
+
+***** Floating
+floatp
+- Useful functions
+  | truncate | round towards zero |
+  | floor    | round downwards    |
+  | ceiling  | round upwards      |
+  | round    | round to nearest   |
+- Mathematical
+  | sin      |   |
+  | cos      |   |
+  | tan      |   |
+  | asin     |   |
+  | acos     |   |
+  | atan     |   |
+  | exp      |   |
+  | log      |   |
+  | sqrt     |   |
+  | float-e  |   |
+  | float-pi |   |
+  | random   |   |
+
+**** Charactor
+**** Symbol
+**** Sequence
+:BASIC:
+| sequencep       | predicte |
+| length          | length   |
+| elt             | nth      |
+| copy-sequence   |          |
+| reverse         |          |
+| sort            |          |
+| seq-drop        |          |
+| seq-take        |          |
+| seq-map         |          |
+| seq-filter      |          |
+| seq-remove      |          |
+| seq-reduce      |          |
+| seq-find        |          |
+| seq-contains    |          |
+| seq-concatenate |          |
+| seq-max         |          |
+| seq-min         |          |
+:END:
+***** List
+refer to /SICP/
+| null      | (null '())             |
+| car       | (car x)                |
+| cdr       | (cdr x)                |
+| nth       | (nth 2 x)              |
+| last      | (last x)               |
+| cons      | (cons 1 '(2))          |
+| list      | (list 1 2 3)           |
+| make-list | (make-list 3 'pigs)    |
+| append    | (append '(a b) '(c d)) |
+
+***** Array
+| arrayp | predicate |
+| aref   | nth       |
+| aset   | set nth   |
+
+****** Vector
+****** String
+- Basics
+  | make-string  | (make-string 5 ?x)           |
+  | string       | (string ?a ?b ?c)            |
+  | substring    | (substring "abcdefg" 0 3)    |
+  | concat       | (concat "abc" "-def")        |
+  | split-string | (split-string " two words ") |
+  | string=      | (string "abc" "abc")         |
+- Conversions
+  | number-to-string | (number-to-string 256)   |
+  | string-to-number | (string-to-number "256") |
+- Formatting
+  | format     |   |
+  | downcase   |   |
+  | upcase     |   |
+  | capitalize |   |
+
+**** Macro
+
+*** Editing Types
+**** Buffer
+**** Marker
+**** Window
+**** Frame
+**** Terminal
+**** Process
+**** Stream
+**** Font
+
+** Control Structures
+| (progn a b c ...) |   |
+| (if p a b)        |   |
+| (when p x)        |   |
+| (unless p x)      |   |
+| (cond clause)     |   |
+| (pcase clause)    |   |
 
 * Awesome Org-mode
 
