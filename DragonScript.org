@@ -17,7 +17,9 @@
 
 * Weapons
 
-
+** Books
+*** Concrete Mathematics
+*** CLRS
 
 * Dragons [11/13]
 
@@ -159,7 +161,6 @@ int FindOutlier(std::vector<int> arr)
 
 *** Extant
 *** Floyd algorithm
-
 
 *** Bernt's algorithm(The Teleporting Turtle)
 
@@ -324,48 +325,7 @@ countChange(unsigned money, const std::vector<unsigned>& coins) {
 #+END_SRC
 Somehow a little confused with this solution)
 
-** DONE Longest Palindromic Substring
-
-*** Description
-Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-
-Example 1:
-#+BEGIN_SRC
-Input: "babad"
-Output: "bab"
-Note: "aba" is also a valid answer.
-#+END_SRC
-
-Example 2:
-#+BEGIN_SRC
-Input: "cbbd"
-Output: "bb"
-#+END_SRC
-
-*** Solution
-#+BEGIN_SRC c++
-
-//DP method
-string longestPalindrome(string s) {
-  
-  int rc[1000][1000], start(0), end(0), cur(0);
-  for(int i(s.size()-1); i >= 0; --i) {
-    for(int j(i); j < s.size(); ++j) {
-      
-      if(i == j) rc[i][j] = 1;
-      else if(j - i == 1) rc[i][j] = s[i] == s[j] ? 2 : 0;
-      else rc[i][j] = 
-        rc[i+1][j-1] && s[i] == s[j] ? rc[i+1][j-1] + 2 : 0;
-      cur = rc[i][j] > cur ?
-        start = i, end = j, rc[i][j] : cur;
-    }
-  }
-  return s.substr(start, end-start+1);
-}
-
-#+END_SRC
-
-** DONE ZigZag Conversion
+** DONE ZigZag Conversion                                              :MEDI:
 
 *** Description
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -430,7 +390,70 @@ string Solution::convert(string s, int numRows) {
 
 #+END_SRC
 
-** DONE Maximum Subarray
+** DONE Longest Palindromic Substring                             :HARD:BOND:
+
+*** Description
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+#+BEGIN_SRC
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+#+END_SRC
+
+Example 2:
+#+BEGIN_SRC
+Input: "cbbd"
+Output: "bb"
+#+END_SRC
+
+*** Analysis
+
+Let's first find the way to get the longest length
+#+BEGIN_SRC haskell
+
+-- s := the string(data)
+-- i := left index
+-- j := right index
+f i j | i == j     = 1
+      | j - i == 2 = if s[i] == s[j] then 2 else 0
+      | otherwise  = if s[i] == s[j] && inner then inner + 2 else 0
+where inner = f (i + 1) (j - 1)
+#+END_SRC
+
+*** Solution
+
+**** Dynamic Programming
+#+BEGIN_SRC c++
+
+//DP method
+string longestPalindrome(string s) {
+  
+  int rc[1000][1000], start(0), end(0), cur(0);
+  for(int i(s.size()-1); i >= 0; --i) {
+    for(int j(i); j < s.size(); ++j) {
+      
+      if(i == j) rc[i][j] = 1;
+      else if(j - i == 1) rc[i][j] = s[i] == s[j] ? 2 : 0;
+      else rc[i][j] = 
+        rc[i+1][j-1] && s[i] == s[j] ? rc[i+1][j-1] + 2 : 0;
+      cur = rc[i][j] > cur ?
+        start = i, end = j, rc[i][j] : cur;
+    }
+  }
+  return s.substr(start, end-start+1);
+}
+
+#+END_SRC
+- Summary
+  Focus on how answer is constructed by answers.
+  Unfortunately, still O(n^2)
+
+**** Manacher's Algorithm
+underwork
+
+** DONE Maximum Subarray                                          :MEDI:BOND:
 
 *** Description
 Given an integer array nums, 
@@ -463,7 +486,7 @@ int Solution::maxSubArray(vector<int>& nums) {
 
 #+END_SRC
 
-** DONE Climbing Stairs
+** DONE Climbing Stairs                                                :EASY:
 
 *** Description
 You are climbing a stair case. It takes n steps to reach to the top.
@@ -490,6 +513,15 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 #+END_SRC
 
+*** Analysis
+
+#+BEGIN_SRC haskell
+
+f 0 = 1
+f n = if n < 0 then 0 else f (n-1) + f (n-2)
+#+END_SRC
+Obviously, it's a fibonacci seq!
+
 *** Solution
 #+BEGIN_SRC c++
 
@@ -505,7 +537,7 @@ int Solution::climbStairs(int n) {
 
 #+END_SRC
 
-** DONE Regular Expression Matching
+** DONE Regular Expression Matching                                    :HARD:
 
 *** Description
 Given an input string (s) and a pattern (p), 
@@ -574,7 +606,7 @@ bool Solution::isMatch(string s, string p) {
 
 #+END_SRC
 
-** DONE Wildcard Matching
+** DONE Wildcard Matching                                              :MEDI:
 
 *** Description
 Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
