@@ -1,0 +1,14 @@
+#+TITLE:  Machine Learning
+#+AUTHOR: Comcx
+#+DATE:   <2019-10-05 六>
+
+
+* Supervised
+
+
+
+
+* Unsupervised
+
+
+

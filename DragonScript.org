@@ -21,68 +21,7 @@
 
 * Dragons [11/13]
 
-** DONE Add Two Numbers
-
-*** Description
-
-You are given two non-empty linked lists representing two non-negative integers. 
-The digits are stored in reverse order and each of their nodes contain a single digit. 
-Add the two numbers and return it as a linked list.
-
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-#+BEGIN_SRC
-Example:
-
-Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-Output: 7 -> 0 -> 8
-Explanation: 342 + 465 = 807.
-#+END_SRC
-
-*** Solution
-
-#+BEGIN_SRC C++
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-      
-      ListNode *a = l1, 
-               *b = l2;
-      ListNode ans = ListNode(-1),
-               *cur = &ans;
-      int cre = 0;
-      do {
-        
-        int sum = (a ? a->val : 0) + (b ? b->val : 0) + cre;
-        int bit = sum % 10;
-        cre = sum / 10;
-        
-        cur->next = new ListNode(bit);
-        
-        cur = cur->next;
-        a = a ? a->next : NULL;
-        b = b ? b->next : NULL;
-        
-      } while(a || b);
-      
-      if(cre == 1) cur->next = new ListNode(1);
-      return ans.next;
-    }
-};
-
-
-#+END_SRC
-
-
-** DONE Longest Substring Without Repeating Characters
+** DONE Longest Substring Without Repeating Characters                 :EASY:
 
 *** Description
 
@@ -104,6 +43,37 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3. 
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 #+END_SRC
+
+*** Analysis
+  Let's generalize this problem a little bit:
+
+**** Settings
+   - Say our indices in the array comes from 0.
+   - Our solver 
+       =f : Seq a ==> Index -> (List a -> a -> Bool) -> (List a, Length)=
+       which gives the answer on the range index of [0, n]
+**** Environment
+   s : List a
+**** Pseudocode
+#+BEGIN_SRC haskell
+f 0 p = if p [] (s 0) then ([s 0], 1) else ([], 0)
+f n p = if p a (s n) then (a ++ [s n], len + 1) else ([s n], 0)
+where
+  (a, len) = f (n - 1) p
+
+-- Here we can make
+p a x = not $ elem a x
+
+main = f (length s - 1) p
+#+END_SRC
+
+Ok, we can see now we must tranverse the entire array, which is O(n),
+therefore, the complexity is depend on the complexity of function *p*.
+
+I we use hash, we can have function p with time complexity O(1)
+and finally we have O(n) algorithm.
+
+If we do not use hash, any better way?
 
 *** Solution
 
@@ -147,7 +117,7 @@ int lengthOfLongestSubstring(string s) {
 
 #+END_SRC
 
-** DONE Find The Parity Outlier
+** DONE Find The Parity Outlier                                        :EASY:
 
 *** Description
 You are given an array (which will have a length of at least 3, 
@@ -185,8 +155,7 @@ int FindOutlier(std::vector<int> arr)
 
 #+END_SRC
 
-
-** NEXT Cycle detection
+** NEXT Cycle detection                                                :MEDI:
 
 *** Extant
 *** Floyd algorithm
@@ -196,7 +165,7 @@ int FindOutlier(std::vector<int> arr)
 
 *** Experiment
 
-** DONE Factorial decomposition
+** DONE Factorial decomposition                                        :MEDI:
 
 *** Description
 The aim of the kata is to decompose n! (factorial n) into its prime factors.
@@ -256,26 +225,39 @@ string decomp(int n) {
 }
 #+END_SRC
 
-** DONE Counting Change Combinations
+** DONE Counting Change Combinations                                   :MEDI:
 
 *** Description
-Write a function that counts how many different ways you can make change for an amount of money, given an array of coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2:
-
-1+1+1+1, 1+1+2, 2+2.
+Write a function that counts how many different ways you can make change for an amount of money, 
+given an array of coin denominations. 
+For example, there are 3 ways to give change for 4 if you have coins with denomination 1 and 2:
+=1+1+1+1, 1+1+2, 2+2.=
 
 The order of coins does not matter:
-
-1+1+2 == 2+1+1
+=1+1+2 == 2+1+1=
 
 Also, assume that you have an infinite amount of coins.
 
 Your function should take an amount to change and an array of unique denominations for the coins:
 
-#+BEGIN_SRC
-  count_change(4, {1,2}) // => 3
-  count_change(10, {5,2,3}) // => 4
-  count_change(11, {5,7}) // => 0
+#+BEGIN_SRC c++
+count_change(4,  {1,2})   // => 3
+count_change(10, {5,2,3}) // => 4
+count_change(11, {5,7})   // => 0
 #+END_SRC
+
+*** Analysis
+
+#+BEGIN_SRC haskell
+
+-- m := money
+-- i := index of coins
+count m i = count (m - (coins i)) i + count m (i + 1)
+count 0 _ = 1
+#+END_SRC
+found a bug here, you can't export to html if u have codes on the 1st line of haskell code block
+**** Complexity
+   underwork
 
 *** Solution
 
@@ -285,12 +267,13 @@ Your function should take an amount to change and an array of unique denominatio
 #include <algorithm>
 
 using std::vector;
-unsigned long long 
+using large = unsigned long long;
+large
 dp(unsigned money, const vector<unsigned int>& coins) {
 
-  unsigned long long ans(0);
-  unsigned long long **rc = new unsigned long long*[money + 1];
-  for (int i = 0; i < money+1; ++i) rc[i] = new unsigned long long[coins.size()];
+  large ans(0);
+  large **rc = new large*[money + 1];
+  for (int i = 0; i < money+1; ++i) rc[i] = new large[coins.size()];
   
   for(int i(0); i <= money; ++i)
     rc[i][coins.size()-1] = i % coins[coins.size()-1] == 0 ? 1 : 0;
@@ -312,10 +295,10 @@ dp(unsigned money, const vector<unsigned int>& coins) {
 //count m i = count (m-coins[i]) i + count m (i+1)
 //count 0 _ = 1
 
-unsigned long long 
+large 
 countChange(const unsigned int money, const vector<unsigned int>& coins) {
 
-  unsigned long long ans(0);
+  large ans(0);
   
   vector<unsigned int> pac(coins);
   std::sort(pac.begin(), pac.end());
@@ -327,20 +310,19 @@ countChange(const unsigned int money, const vector<unsigned int>& coins) {
 
 #+END_SRC
 
-#+BEGIN_SRC C++
-
-unsigned long long 
+#+BEGIN_SRC c++
+using large = unsigned long long;
+large 
 countChange(unsigned money, const std::vector<unsigned>& coins) {
-  std::vector<unsigned long long> ks(money + 1);
+  std::vector<large> ks(money + 1);
   ks[0] = 1;
   for (unsigned i : coins)
     for (unsigned j = i; j <= money; j++)
       ks[j] += ks[j - i];
   return ks[money];
 }
-
 #+END_SRC
-
+Somehow a little confused with this solution)
 
 ** DONE Longest Palindromic Substring
 
@@ -592,7 +574,6 @@ bool Solution::isMatch(string s, string p) {
 
 #+END_SRC
 
-
 ** DONE Wildcard Matching
 
 *** Description
@@ -671,7 +652,11 @@ bool Solution::isMatch(string s, string p) {
 
 #+END_SRC
 
-** TODO ...
+** TODO The Josephus Problem
+
+
+
+
 
 
 
