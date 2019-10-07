@@ -635,12 +635,16 @@ refer to /SICP/
 
 *** Plain Lists
 **** Unordered
+#+BEGIN_SRC 
 - dash :: df
 + plus
+#+END_SRC
 
 **** Ordered
+#+BEGIN_SRC 
 1. dot
 1) para
+#+END_SRC
 
 ** Elements
 *** Drawer
@@ -694,6 +698,7 @@ org-insert-drawer
 **** Region
 **** Calculation
 **** Size
+#+BEGIN_SRC 
 |---+------------------------------|               |---+--------|
 |   |                              |               |   | <6>    |
 | 1 | one                          |               | 1 | one    |
@@ -701,7 +706,7 @@ org-insert-drawer
 | 3 | This is a long chunk of text |     ----/     | 3 | This=> |
 | 4 | four                         |               | 4 | four   |
 |---+------------------------------|               |---+--------|
-
+#+END_SRC
 **** Group
 **** Reference
 
