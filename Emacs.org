@@ -598,12 +598,49 @@ refer to /SICP/
 | (pcase clause)    |   |
 
 * Awesome Org-mode
+
 ** Outline
+*** View
+- Commands
+  | TAB     | ,-> FOLDED -> CHILDREN -> SUBTREE --. |
+  |         | '-----------------------------------' |
+  | S-TAB   | Global cycle                          |
+  | C-c TAB | \n => show children down to level n   |
+
+- Setting
+#+BEGIN_SRC org 
+#+STARTUP: overview
+#+STARTUP: content
+#+STARTUP: showall
+#+STARTUP: showeverything
+#+END_SRC
+
+*** Motion
 | C-c C-n | Next heading                     | org-next-visible-heading     |
 | C-c C-p | Previous heading                 | org-previous-visible-heading |
 | C-c C-f | Next heading same level          | org-forward-same-level       |
 | C-c C-b | Previous heading same level      | org-backward-same-level      |
 | C-c C-u | Backward to higher level heading | outline-up-heading           |
+
+*** Editing
+| M-RET   | Insert a new item                                      | org-meta-return                    |
+| C-RET   | Insert a new heading at the end of the current subtree | org-insert-heading-respect-content |
+| M-LEFT  | Promote current heading by one level                   | org-do-promote                     |
+| M-RIGHT | Demote current heading by one level                    | org-do-demote                      |
+| M-UP    | swap with previous subtree of same level               | org-move-subtree-up                |
+| M-DOWN  | swap with next subtree of same level                   | org-move-subtree-down              |
+
+*** Sparsing
+| C-c / | org-sparse-tree |
+
+*** Plain Lists
+**** Unordered
+- dash :: df
++ plus
+
+**** Ordered
+1. dot
+1) para
 
 ** Elements
 *** Drawer
@@ -614,11 +651,70 @@ org-insert-drawer
 
 *** Block
 *** Footnote
+  - Commands
+    #+BEGIN_SRC 
+    C-c C-x f
+    The footnote action command. When the cursor is on a footnote reference, jump to the definition. 
+    When it is at a definition, jump to the (first) reference. Otherwise, create a new footnote. 
+    When this command is called with a prefix argument, a menu of additional options including renumbering is offered.
+    #+END_SRC
+
+    #+BEGIN_SRC 
+    C-c C-c                         C-c '
+    Jump to definition              Edit definition in a new window which can be closed with C-c ' again
+    #+END_SRC
+  - Formats
+    + [fn:name]
+    + [fn::definition]
+    + [fn:name:definition]
+
 *** Table
+**** Creation and conversion
+   C-c | -- a little confused with this command...
+
+**** Field motion
+| C-c C-c | Re-align the table and don’t move to another field       |
+| TAB     | Re-align the table, move to the next field               |
+| S-TAB   | Re-align, move to previous field                         |
+| RET     | Re-align, move to next row                               |
+| M-a     | Move to beginning of the current field or previous field |
+| M-e     | Move to end of the current field or next field           |
+
+**** Row and Column motion
+| M-LEFT    | Move cloumn left             |
+| M-RIGHT   | Move column right            |
+| M-UP      | Move row up                  |
+| M-DOWN    | Move row down                |
+| M-S-LEFT  | Kill column                  |
+| M-S-RIGHT | Insert column                |
+| M-S-UP    | Kill row                     |
+| M-S-DOWN  | Insert row                   |
+| C-c -     | Insert horizontal line below |
+
+**** Region
+**** Calculation
+**** Size
+|---+------------------------------|               |---+--------|
+|   |                              |               |   | <6>    |
+| 1 | one                          |               | 1 | one    |
+| 2 | two                          |     ----\     | 2 | two    |
+| 3 | This is a long chunk of text |     ----/     | 3 | This=> |
+| 4 | four                         |               | 4 | four   |
+|---+------------------------------|               |---+--------|
+
+**** Group
+**** Reference
+
 *** Link
 *** TODO
 *** Tag
 ** Modes
+** Syntax
+use =M-: (org-element-parse-buffer) RET=
+
+
+
+
 
 
 
