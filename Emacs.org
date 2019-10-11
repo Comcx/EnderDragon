@@ -709,14 +709,58 @@ org-insert-drawer
 #+END_SRC
 **** Group
 **** Reference
+| C-c ? | To find out what the coordinates of a field are |
+- General format:
+  #+BEGIN_SRC 
+  @row$column
+
+  E.g.
+  | 1 | 2 | 3 |
+  | 4 | 5 | 9 |
+  #+TBLFM: $3=vsum($1..$2)
+  #+END_SRC
+
+- Functions
 
 *** Link
+**** Format
+#+BEGIN_SRC 
+[[link][description]]
+To edit, use C-c C-l
+To open, use C-c C-o
+#+END_SRC
+
+**** Internal
+#+BEGIN_SRC 
+The great brother:
+[[target]] =======C-c C-o======> <<target>>
+#+END_SRC
+
+**** External
+***** Formats
+| http://www.astro.uva.nl/~dominik            | on the web                     |
+| doi:10.1000/182                             | DOI for an electronic resource |
+| file:/home/dominik/images/jupiter.jpg       | file, absolute path            |
+| /home/dominik/images/jupiter.jpg            | same as above                  |
+| file:papers/last.pdf                        | file, relative path            |
+| ./papers/last.pdf                           | same as above                  |
+| file:/ssh:myself@some.where:papers/last.pdf | file, path on remote machine   |
+| /ssh:myself@some.where:papers/last.pdf      | same as above                  |
+| file:sometextfile::NNN                      | file, jump to line number      |
+| file:projects.org                           | another Org file               |
+| file:projects.org::some words               | text search in Org file3       |
+
 *** TODO
+**** Basic Commands
+| C-c C-t          | Tag Selection |
+| S-RIGHT / S-LEFT | Tag rotation  |
+                   |               |
+**** Set Keywords
+
 *** Tag
 ** Modes
 ** Syntax
 use =M-: (org-element-parse-buffer) RET=
-
 
 
 
