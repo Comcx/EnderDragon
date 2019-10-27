@@ -50,7 +50,8 @@ to a file path
 
 *** Exiting Emacs
 - C-x C-c : Kill Emacs
-| command                | function                                      |
+| Command                | Function                                      |
+|------------------------+-----------------------------------------------|
 | confirm-kill-processes | ask for confirmation for killing subprocesses |
 | confirm-kill-emacs     |                                               |
 - C-z 
@@ -80,18 +81,19 @@ cs:ch-fr buf      pos line   (major minor)
 #+END_SRC
 where
 - cs => charactor set
-  - *-* => no special char set
-  - *=* => no conversion
+  + *-* => no special char set
+  + *=* => no conversion
+  + U => Unicode
 
 - ch
-  - *--* => same content as file in disk
-  - **   => buffer is modified
-  - *%** => buffer is modified for read-only file
-  - *%%* => otherwise
+  + *--* => same content as file in disk
+  + ** => buffer is modified
+  + *%** => buffer is modified for read-only file
+  + *%%* => otherwise
 
 - -
-  - *-* => normal
-  - *@* => default-directory is on a remote machine
+  + *-* => normal
+  + *@* => default-directory is on a remote machine
 
 - fr: file name(terminal only)
 
@@ -131,8 +133,8 @@ Control => Ctrl
 Alt     => Meta(default)
 #+END_SRC
 - Shortcuts:
-  - C-x : Control-x
-  - M-x : Meta-x
+  + C-x : Control-x
+  + M-x : Meta-x
 
 Moreover, you can just type [ESC] before charactors to envoke Meta, for example,
 #+BEGIN_SRC 
@@ -195,7 +197,7 @@ ESC C-a === C-M-a
 - Selection
   =C-x o=
 - Resizing
-  | C-x o | delete-window                       |
+  | C-x 0 | delete-window                       |
   | C-x 1 | delete-other-windows                |
   | C-x ^ | enlarge-window                      |
   | C-x } | enlarge-window-horizontally         |
@@ -374,6 +376,10 @@ C-_
 C-h k
 describe-key
 \key => describe key
+
+C-h f
+describe-function
+\func => describe functio
 #+END_SRC
 
 **** Information
@@ -465,9 +471,9 @@ M-x follow-mode
   | M-%   | query-replace        |
   | C-M-% | query-replace-regexp |
   - Batch replacement
-  #+BEGIN_SRC 
-  M-x replace-string
-  #+END_SRC
+    #+BEGIN_SRC 
+    M-x replace-string
+    #+END_SRC
 
 ** Modes
 *** Major Modes
@@ -598,7 +604,7 @@ refer to /SICP/
 | (pcase clause)    |   |
 
 * Awesome Org-mode
-
+  
 ** Outline
 *** View
 - Commands
@@ -616,6 +622,7 @@ refer to /SICP/
 #+END_SRC
 
 *** Motion
+Remember use =C-c= as a prefix
 | C-c C-n | Next heading                     | org-next-visible-heading     |
 | C-c C-p | Previous heading                 | org-previous-visible-heading |
 | C-c C-f | Next heading same level          | org-forward-same-level       |
@@ -623,12 +630,13 @@ refer to /SICP/
 | C-c C-u | Backward to higher level heading | outline-up-heading           |
 
 *** Editing
-| M-RET   | Insert a new item                                      | org-meta-return                    |
-| C-RET   | Insert a new heading at the end of the current subtree | org-insert-heading-respect-content |
-| M-LEFT  | Promote current heading by one level                   | org-do-promote                     |
-| M-RIGHT | Demote current heading by one level                    | org-do-demote                      |
-| M-UP    | swap with previous subtree of same level               | org-move-subtree-up                |
-| M-DOWN  | swap with next subtree of same level                   | org-move-subtree-down              |
+Use =Meta= Key!
+ | M-RET   | Insert a new item                                      | org-meta-return                    |
+ | C-RET   | Insert a new heading at the end of the current subtree | org-insert-heading-respect-content |
+ | M-LEFT  | Promote current heading by one level                   | org-do-promote                     |
+ | M-RIGHT | Demote current heading by one level                    | org-do-demote                      |
+ | M-UP    | swap with previous subtree of same level               | org-move-subtree-up                |
+ | M-DOWN  | swap with next subtree of same level                   | org-move-subtree-down              |
 
 *** Sparsing
 | C-c / | org-sparse-tree |
@@ -647,6 +655,7 @@ refer to /SICP/
 #+END_SRC
 
 ** Elements
+Remember, to insert, use =C-c C-x= or =C-c= prefix
 *** Drawer
 #+BEGIN_SRC 
 C-c C-x d
@@ -694,6 +703,7 @@ org-insert-drawer
 | M-S-UP    | Kill row                     |
 | M-S-DOWN  | Insert row                   |
 | C-c -     | Insert horizontal line below |
+|-----------+------------------------------|
 
 **** Region
 **** Calculation
@@ -758,6 +768,18 @@ The great brother:
 **** Set Keywords
 
 *** Tag
+- Insertion
+  #+BEGIN_SRC 
+  C-c C-q
+  or
+  C-c C-c
+  #+END_SRC
+
+- Format
+  #+BEGIN_SRC 
+  :TAG:
+  #+END_SRC
+
 ** Modes
 ** Syntax
 use =M-: (org-element-parse-buffer) RET=
