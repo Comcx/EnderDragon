@@ -1,0 +1,26 @@
+#+TITLE:  Cat Theory
+#+AUTHOR: Comcx
+#+DATE:   <2019-11-25 一>
+
+* Morphism
+
+** Homomorphism
+** Endomorphism
+a homomorphism from an object to itself
+
+** Isomorphism
+a homomorphism that is bijective
+
+** Automorphism
+a bijective endomorphism
+
+** Epimorphism
+a homomorphism that is surjective
+
+** Monomorphism
+a homomorphism that is injective
+
+* Functor
+
+
+

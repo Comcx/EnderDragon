@@ -685,11 +685,3 @@ bool Solution::isMatch(string s, string p) {
 #+END_SRC
 
 ** TODO The Josephus Problem
-
-
-
-
-
-
-
-
