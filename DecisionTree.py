@@ -1,4 +1,5 @@
 from functools import reduce
+from scipy import stats
 import numpy as np
 
 
@@ -23,17 +24,30 @@ class DecisionTree:
   ID3  = 0
   C4_5 = 1
   CART = 2
-  def __init__(self, tt, raw):
+  def __init__(self, tt, raw, at = None):
     '''
     NOTE! It's your responsibility to make sure that the size of data
           is at least 2 x 2
     '''
     if raw.size == 0:
-      print("Warning: Empty data!")
+      #print("Warning: Empty data!")
+      #print(raw)
+      pass
     self.data  = raw
     self.type  = tt
+    self.attrType = at
     self.shape = self.data.shape
     self.empty = self.data.size == 0
+
+    if self.type == self.ID3:
+      self.metric = self.__class__.entropy
+    elif self.type == self.C4_5:
+      self.metric = self.__class__.entropy
+    elif self.type == self.CART:
+      self.metric = self.__class__.gini
+    else:
+      self.metric = self.__class__.entropy
+      #end if
     #end
 
   def __len__(self) -> int:
@@ -53,13 +67,21 @@ class DecisionTree:
     '''
     return range(1, len(self.data[0, :])) if not self.empty else []
     #end
-    
+
+  def discretize(self):
+    return self.__class__(self.type,
+                      np.concatenate((np.array([self.data[:, 0].T]), np.array(self.data[:, 1:], dtype=int).T)).T,
+                      self.attrType)
+                      
+    #end
+      
   def dataOfAttr(self, attr: int, f):
     '''
     Filter data satisfying specific rule f
     '''
+    # print(f)
     d = self.data[np.where(f(self.data[:, attr]), True, False), :]
-    return self.__class__(self.type, d)
+    return self.__class__(self.type, d, self.attrType)
     #end
     
   def divide(self, attr, divisor = None):
@@ -80,7 +102,7 @@ class DecisionTree:
   
   def entropy(self) -> float:
     "Calculating entropy..."
-    n = len(self.data[:, 0])
+    n = len(self.data)
     def accu(a, e):
       r = len(self.dataOfAttr(0, lambda x: x == e)) / n
       return a - r * np.log2(r)
@@ -92,12 +114,20 @@ class DecisionTree:
     return 0
     #end
 
-  def bestDivisor(self, attr) -> float:
+  def bestDivisor(self, attr: int) -> float:
+    if not self.attrType[attr]: return None
     vals = np.unique(np.sort(self.data[:, attr]))
-    return 0
+    gains = [self.gain(attr, v) for v in vals]
+    
+    #print(vals[gains.index(max(gains))])
+    #print("of")
+    #print(vals)
+    #print(gains)
+    
+    return vals[gains.index(max(gains))]
     #end
     
-  def gain(self, attr: int, metric = None) -> float:
+  def gain(self, attr: int, divisor = None) -> float:
     '''
     Calculating gain:
     Using entropy metric by default
@@ -106,64 +136,104 @@ class DecisionTree:
       + Gini
       + Classification error
     '''
-    if metric == None: metric = self.__class__.entropy
     n = len(self)
-    return metric(self) - reduce(
-      lambda a, e: len(e)/n * metric(e), self.divide(attr), 0)
+    return self.metric(self) - reduce(
+      lambda a, e: len(e)/n * self.metric(e), self.divide(attr, divisor))
     #end
-
-  def ratio(self, attr, metric = None) -> float:
+  
+  def ratio(self, attr) -> float:
     return 0
     #end
-
-  def decide(self, attrs, metric = None) -> int:
+  
+  def decide(self, attrs) -> int:
     "Decide the next node!"
     if attrs == []: return 0
     '''
     UNDERWORK!!
     '''
     f = self.gain if self.type == self.__class__.ID3 else self.gain
-    c = [f(a, metric) for a in attrs]
+    c = [f(a, self.bestDivisor(a)) for a in attrs]
     return attrs[c.index(max(c))]
+
   
-  def train(self, attrs, metric = None):
+  def train(self, attrs):
     "Generating the tree function"
     if self.entropy() == 0 or attrs == []:
-      t = self.types()[0]
-      return lambda x: t
+      if self.empty: return lambda x: None
+      t = stats.mode(self.types())[0]
+      return lambda x: t[0]
     else:
       attr = self.decide(attrs)
       attr_rest = list(filter(lambda e: e != attr, attrs))
-      fs = np.array([s.train(attr_rest, metric) for s in self.divide(attr)])
-      def g(x):
-        return fs[np.where(np.unique(self.data[:, attr]) == x[0], True, False)][0](x[1:])
-        #end
-      return g
+      fs = np.array([s.train(attr_rest) for s in self.divide(attr, self.bestDivisor(attr))])
+      def merge(x):
+        if self.attrType[attr]:
+          f = fs[0 if x[attr-1] <= self.bestDivisor(attr) else 1]
+          return f(x)
+        else:
+          f = fs[np.where(np.unique(self.data[:, attr]) == x[attr-1], True, False)]
+          if f.size == 0:
+            print("Can not classify: " + str(x) + " with " + str(np.unique(self.data[:, attr])))
+            return None
+          else: return f[0](x)
+          #end if
+        #end f
+      return merge
       #end if
-    #end
+    #end train
   
-  def __call__(self, metric = None):
+  def __call__(self):
     "return the tree function"
-    return self.train(self.attrs(), metric)
+    return self.train(self.attrs())
     #end
 
 
 
 
+def train(data):
+  '''
+  data = np.array(
+    [ [1, 2, 3, 4, 7]
+    , [0, 4, 5, 6, 8]
+    , [1, 6, 7, 6, 2]
+    , [1, 4, 8, 0, 3]
+    , [2, 4, 1, 1, 1] ])
+  '''
+  # Using Entropy as default
+  t = DecisionTree(DecisionTree.C4_5, data, [False, True, True, True, True])
+  f = t()
 
-data = np.array(
-  [ [1, 2, 3, 4, 7]
-  , [0, 4, 5, 6, 8]
-  , [1, 6, 7, 6, 2]
-  , [1, 4, 8, 0, 3]
-  , [2, 4, 1, 1, 1] ])
+  ok = 0
+  no = 0
+  for e in t.data:
+    # print(e[1:])
+    r = f(e[1:])
+    ok = ok + (1 if r == e[0] else 0)
+    print("OK" if r == e[0] else "NO" + ": " + str(r) + " =/= " + str(e[0]))
 
-# Using Entropy as default
-f = DecisionTree(DecisionTree.C4_5, data)()
+  print("Ratio: " + str(ok/len(t)))
 
-for e in data:
-  t = f(e[1:])
-  print("OK" if t == e[0] else "NO")
+    
+  return t
+  #end train
 
-#end main
 
+def test(t, data):
+  f = t()
+
+  ok = 0
+  no = 0
+  for e in data:
+    # print(e[1:])
+    r = f(e[1:])
+    ok = ok + (1 if r == e[0] else 0)
+    print("OK" if r == e[0] else "NO" + ": " + str(r) + " =/= " + str(e[0]))
+
+  print("Ratio: " + str(ok/len(data)))  
+
+  #end test
+
+
+
+
+  
