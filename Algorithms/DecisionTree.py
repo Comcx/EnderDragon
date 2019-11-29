@@ -69,9 +69,10 @@ class DecisionTree:
     #end
 
   def discretize(self):
-    return self.__class__(self.type,
-                      np.concatenate((np.array([self.data[:, 0].T]), np.array(self.data[:, 1:], dtype=int).T)).T,
-                      self.attrType)
+    return self.__class__(
+      self.type,
+      np.concatenate((np.array([self.data[:, 0].T]), np.array(self.data[:, 1:], dtype=int).T)).T,
+      self.attrType)
                       
     #end
       
@@ -79,7 +80,6 @@ class DecisionTree:
     '''
     Filter data satisfying specific rule f
     '''
-    # print(f)
     d = self.data[np.where(f(self.data[:, attr]), True, False), :]
     return self.__class__(self.type, d, self.attrType)
     #end
@@ -89,7 +89,7 @@ class DecisionTree:
     The great dividin function which divide data set as you want!
     NOTE: If you don't provide divisor, just divide element by element
           otherwise, divide by the given divisor
-    '''
+     '''
     if divisor == None:
       return reduce(
         lambda a, e: a + [self.dataOfAttr(attr, lambda x: x == e)],
@@ -102,6 +102,7 @@ class DecisionTree:
   
   def entropy(self) -> float:
     "Calculating entropy..."
+    if len(self) <= 0: return 10
     n = len(self.data)
     def accu(a, e):
       r = len(self.dataOfAttr(0, lambda x: x == e)) / n
@@ -116,15 +117,27 @@ class DecisionTree:
 
   def bestDivisor(self, attr: int) -> float:
     if not self.attrType[attr]: return None
+    if self.data.size == 0: return 0
     vals = np.unique(np.sort(self.data[:, attr]))
-    gains = [self.gain(attr, v) for v in vals]
+    ps = []
+    for i in range(0, len(vals)-1):
+      ps.append((vals[i+1] + vals[i]) / 2)
+    ps.append(vals[0])
+    #print(vals)
+    gains = [self.gain(attr, v) for v in ps]
     
     #print(vals[gains.index(max(gains))])
     #print("of")
     #print(vals)
     #print(gains)
+    #ss = (self.divide(attr, vals[gains.index(max(gains))]))
+    #print(ss[0].data)
+    #print(ss[1].data)
+    #print()
+    #print()
     
-    return vals[gains.index(max(gains))]
+    
+    return ps[gains.index(max(gains))]
     #end
     
   def gain(self, attr: int, divisor = None) -> float:
@@ -138,7 +151,7 @@ class DecisionTree:
     '''
     n = len(self)
     return self.metric(self) - reduce(
-      lambda a, e: len(e)/n * self.metric(e), self.divide(attr, divisor))
+      lambda a, e: len(e)/n * self.metric(e), self.divide(attr, divisor), 1)
     #end
   
   def ratio(self, attr) -> float:
@@ -153,22 +166,48 @@ class DecisionTree:
     '''
     f = self.gain if self.type == self.__class__.ID3 else self.gain
     c = [f(a, self.bestDivisor(a)) for a in attrs]
+    #print(c)
     return attrs[c.index(max(c))]
 
   
-  def train(self, attrs):
+  def gen(self, attrs, n = None):
     "Generating the tree function"
+    #print(n)
     if self.entropy() == 0 or attrs == []:
       if self.empty: return lambda x: None
       t = stats.mode(self.types())[0]
       return lambda x: t[0]
     else:
       attr = self.decide(attrs)
+      #print(attr)
       attr_rest = list(filter(lambda e: e != attr, attrs))
-      fs = np.array([s.train(attr_rest) for s in self.divide(attr, self.bestDivisor(attr))])
+      '''
+      ss = self.divide(attr, self.bestDivisor(attr))
+      print(len(ss[0].data), len(ss[1].data))
+      print([s.entropy() for s in ss])
+      print(self.entropy())
+      print()
+      '''
+      if self.attrType[attr]:
+        dd = self.discretize()
+        self.data[:, attr] = dd.data[:, attr]
+        #end
+      fs = np.array([s.gen(attr_rest) for s in self.divide(attr)])#, self.bestDivisor(attr))])
       def merge(x):
+        #print("merge")
         if self.attrType[attr]:
-          f = fs[0 if x[attr-1] <= self.bestDivisor(attr) else 1]
+          #f = fs[0 if x[attr-1] <= self.bestDivisor(attr) else 1]
+          vs = np.unique(np.floor(self.data[:, attr]))
+          d = (vs[0] - x[attr-1])**2
+          i = 0
+          for id in range(1, len(vs)):
+            if (vs[id] - x[attr-1])**2 < d:
+              i = id
+              d = (vs[id] - x[attr-1])**2
+              #end if
+            #end for
+          f = fs[i]
+          #print(x[attr-1], vs[i], vs)
           return f(x)
         else:
           f = fs[np.where(np.unique(self.data[:, attr]) == x[attr-1], True, False)]
@@ -184,9 +223,10 @@ class DecisionTree:
   
   def __call__(self):
     "return the tree function"
-    return self.train(self.attrs())
+    return self.gen(self.attrs(), 0)
     #end
 
+  
 
 
 
@@ -200,6 +240,7 @@ def train(data):
     , [2, 4, 1, 1, 1] ])
   '''
   # Using Entropy as default
+  #t = DecisionTree(DecisionTree.C4_5, data, [False, True, True, True, True])
   t = DecisionTree(DecisionTree.C4_5, data, [False, True, True, True, True])
   f = t()
 
@@ -209,16 +250,16 @@ def train(data):
     # print(e[1:])
     r = f(e[1:])
     ok = ok + (1 if r == e[0] else 0)
-    print("OK" if r == e[0] else "NO" + ": " + str(r) + " =/= " + str(e[0]))
-
-  print("Ratio: " + str(ok/len(t)))
-
+    #print(">", end = "")
+    print(">" if r == e[0] else " ", end = "")#+ ": " + str(r) + " =/= " + str(e[0]))
+  print()
+  print("Train ratio: " + str(ok/len(t)))
     
   return t
   #end train
+  
 
-
-def test(t, data):
+def valid(t, data):
   f = t()
 
   ok = 0
@@ -227,13 +268,37 @@ def test(t, data):
     # print(e[1:])
     r = f(e[1:])
     ok = ok + (1 if r == e[0] else 0)
-    print("OK" if r == e[0] else "NO" + ": " + str(r) + " =/= " + str(e[0]))
+    #print(">", end = "")
+    print(">" if r == e[0] else " ", end = "")#+ ": " + str(r) + " =/= " + str(e[0]))
 
-  print("Ratio: " + str(ok/len(data)))  
-
+  print()
+  print("Valid ratio: " + str(ok/len(data)))
+  return ok/len(data)
   #end test
 
 
 
 
+def _valid(data, div):
+  if div <= 1:
+    print("The cross time need > 1:)")
+    return None
+    #end if
+  log = []
+  n = len(data)
+  m = int(len(data) / div)
+  for i in range(div):
+    print("\n>>Round " + str(i) + ":")
+    data_valid = data[i*m : i*m+m]
+    data_train = np.concatenate((data[0:i*m], data[i*m+m+1 : n]))
+    t = train(data_train)
+    log.append(test(t, data_valid))
+    #end for
+  print("Cross ratios: " + str(log))
+  return sum(log) / div
+  
+  #end
+
+
+  
   
