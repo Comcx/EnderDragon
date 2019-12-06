@@ -759,7 +759,19 @@ The great brother:
 | file:sometextfile::NNN                      | file, jump to line number      |
 | file:projects.org                           | another Org file               |
 | file:projects.org::some words               | text search in Org file3       |
+***** Pictures
+To insert pictures, just input as the format
+#+BEGIN_SRC 
+[[file: <file path>]] of [[<file path>]]
+#+END_SRC
 
+To display directly in emacs, use command:
+=M-x org-toggle-inline-images= 
+
+To refine the size of the picture:
+#+BEGIN_SRC 
+(setq org-image-actual-width 300)       ; Set width to 300 or what ever
+#+END_SRC
 *** TODO
 **** Basic Commands
 | C-c C-t          | Tag Selection |
