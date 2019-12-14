@@ -791,6 +791,11 @@ To refine the size of the picture:
   #+BEGIN_SRC 
   :TAG:
   #+END_SRC
+*** Clock
+#+BEGIN_SRC 
+C-c C-x C-i  -- Clock in
+C-x C-x C-o  -- Clock out
+#+END_SRC
 
 ** Modes
 ** Syntax
