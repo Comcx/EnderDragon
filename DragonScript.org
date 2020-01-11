@@ -823,6 +823,59 @@ rotLeft a d = rot a $ mod d (length a) where
   rot ar n = drop' n ar ++ take' n ar
 #+END_SRC
 *** NEXT New Year Chaos
+- First submission
+  #+BEGIN_SRC haskell
 
+filter' = Data.List.filter
+-- Complete the minimumBribes function below.
+minimumBribes :: [Int] -> IO ()
+minimumBribes q = do
+  let ms = sum <$> sequence (count q [])
+  putStrLn $ case ms of
+    Just n  -> show n
+    Nothing -> "Too chaotic"
+
+count :: [Int] -> [Maybe Integer] -> [Maybe Integer]
+count [] m = m
+count (x:xs) m = count xs (inver x xs : m)
+
+inver :: Int -> [Int] -> Maybe Integer
+inver n [] = Just 0
+inver n xs = if len <= 2 then Just len else Nothing
+  where len = fromIntegral $ length $ filter' (< n) xs
+  #+END_SRC
+
+  + Result: Failed on some cases...
+  + Analysis
+    Use the constraint of 'at most 2 steps'.
+- Second submission
+#+BEGIN_SRC haskell
+
+import Control.Applicative ((<$>))
+import Control.Monad (replicateM_, guard)
+import Data.List (elemIndex)
+import Data.Maybe (fromJust)
+
+main :: IO ()
+main = do
+  t <- readLn :: IO Int
+  replicateM_ t $ do
+    n  <- readLn :: IO Int
+    as <- reverse . map read . words <$> getLine :: IO [Int]
+    case go n as of
+      Just a  -> print a
+      Nothing -> putStrLn "Too chaotic"
+
+go :: Int -> [Int] -> Maybe Int
+go 0 [] = Just 0
+go n as = do
+  i <- elemIndex n as
+  guard (i <= 2)
+  let (xs, y:ys) = splitAt i as
+  let as' = xs ++ ys
+  r <- go (n - 1) as'
+  return $ r + i
+
+#+END_SRC
 
 
