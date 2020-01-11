@@ -21,7 +21,7 @@
 *** Concrete Mathematics
 *** CLRS
 
-* Dragons [11/13]
+* Dragons [11/14]
 
 ** DONE Longest Substring Without Repeating Characters                 :EASY:
 
@@ -725,4 +725,104 @@ int Solution::maximalSquare(vector<vector<char>>& matrix) {
   return ma * ma;
 }
 #+END_SRC
+
+** NEXT [HackerRank] Interview Preparation Kit [6/7]
+*** DONE Sock Merchant
+#+BEGIN_SRC haskell
+map' = Data.List.map
+-- Complete the sockMerchant function below.
+sockMerchant n ar = sum $ map' pair $ (group . sort) ar
+  where pair xs = div (length xs) 2
+#+END_SRC
+
+*** DONE Counting Valleys
+#+BEGIN_SRC haskell
+
+countingValleys :: Int -> String -> Int
+countingValleys n [] = 0
+countingValleys n xs = count xs 0 0
+
+count [] n vs = vs
+count (c:cs) n vs = 
+  if step c + n < 0 && n >= 0
+  then count cs (step c + n) (vs + 1)
+  else count cs (step c + n) vs
+
+step :: Char -> Int
+step c = case c of
+  'U' -> 1
+  'D' -> (-1)
+  _   -> 0
+
+#+END_SRC
+*** DONE Jumping on the Clouds
+#+BEGIN_SRC haskell
+
+jumpingOnClouds :: [Int] -> Int
+jumpingOnClouds []     = 0
+jumpingOnClouds [x]    = 0
+jumpingOnClouds [a, b] = 1
+jumpingOnClouds (x:a:b:xs)
+  | a == 1    = jumpingOnClouds (b:xs)   + 1
+  | b == 1    = jumpingOnClouds (a:b:xs) + 1
+  | otherwise = jumpingOnClouds (b:xs)   + 1
+  
+#+END_SRC
+*** DONE Repeated String
+#+BEGIN_SRC haskell
+
+take' = Data.List.take
+-- Complete the repeatedString function below.
+repeatedString :: String -> Integer -> Int
+repeatedString s n = 
+  div (fromIntegral n) (fromIntegral $ length s) * countA s + 
+  (countA . (take' (mod (fromIntegral n) $ fromIntegral (length s)))) s
+
+countA "" = 0
+countA (c:cs) = if c == 'a' then countA cs + 1 else countA cs
+
+#+END_SRC
+*** DONE 2D Array - DS
+#+BEGIN_SRC haskell
+
+map' = Data.List.map
+-- Complete the hourglassSum function below.
+hourglassSum :: [[Int]] -> Int
+hourglassSum arr = maximum $ map' (mask arr) $ range ((1, 1), (a-2, b-2))
+  where a = length arr
+        b = length $ arr !! 0
+
+mask :: [[Int]] -> (Int, Int) -> Int
+mask [] _ = 0
+mask m (x, y) = 
+  m !! x !! y + 
+  m !! (x-1) !! y + m !! (x-1) !! (y-1) + m !! (x-1) !! (y+1) +
+  m !! (x+1) !! y + m !! (x+1) !! (y-1) + m !! (x+1) !! (y+1)
+
+#+END_SRC
+#+BEGIN_SRC haskell
+
+hourglassSum :: [[Int]] -> [Int]
+hourglassSum ((a1 : a2 : []) : _)  = []
+hourglassSum (a:b:c:[]) = 
+    (sum (take 3 a)) + (head $ tail b) + (sum (take 3 c)) :
+    hourglassSum (tail a : tail b : tail c : [])
+
+hGlassMap :: [[Int]] -> [Int]
+hGlassMap (a : b : []) = []
+hGlassMap (a : b : c : xs) = maximum (hourglassSum [a,b,c]) : hGlassMap (b:c: xs)
+#+END_SRC
+*** DONE Arrays: Left Rotation
+#+BEGIN_SRC haskell
+
+take' = Data.List.take
+drop' = Data.List.drop
+-- Complete the rotLeft function below.
+rotLeft :: [Int] -> Int -> [Int]
+rotLeft a d = rot a $ mod d (length a) where
+  rot ar n = drop' n ar ++ take' n ar
+#+END_SRC
+*** NEXT New Year Chaos
+
+
 
