@@ -726,7 +726,7 @@ int Solution::maximalSquare(vector<vector<char>>& matrix) {
 }
 #+END_SRC
 
-** NEXT [HackerRank] Interview Preparation Kit [6/7]
+** NEXT [HackerRank] Interview Preparation Kit [6/8]
 *** DONE Sock Merchant
 #+BEGIN_SRC haskell
 map' = Data.List.map
@@ -823,7 +823,38 @@ rotLeft a d = rot a $ mod d (length a) where
   rot ar n = drop' n ar ++ take' n ar
 #+END_SRC
 *** NEXT New Year Chaos
-- First submission
+**** Description
+[[https://www.hackerrank.com/challenges/new-year-chaos/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays][HackerRank]]
+It's New Year's Day and everyone's in line for the Wonderland rollercoaster ride! 
+There are a number of people queued up, and each person wears a sticker indicating their initial position in the queue. 
+Initial positions increment by 1 from 1 at the front of the line to n at the back.
+
+Any person in the queue can bribe the person directly in front of them to swap positions. 
+If two people swap positions, they still wear the same sticker denoting their original places in line. 
+One person can bribe at most two others. For example, if n = 8 and Person 5 bribes Person 4, 
+the queue will look like this: [1 2 3 5 4 6 7 8].
+
+Fascinated by this chaotic queue, 
+you decide you must know the minimum number of bribes that took place to get the queue into its current state!
+
+- Function Description
+
+  Complete the function minimumBribes in the editor below. 
+  It must print an integer representing the minimum number of bribes necessary, or Too chaotic 
+  if the line configuration is not possible.
+
+minimumBribes has the following parameter(s):
+
+q: an array of integers
+Input Format
+
+The first line contains an integer t, the number of test cases.
+
+Each of the next t pairs of lines are as follows:
+- The first line contains an integer t, the number of people in the queue
+- The second line has n space-separated integers describing the final state of the queue.
+
+**** First submission
   #+BEGIN_SRC haskell
 
 filter' = Data.List.filter
@@ -848,7 +879,7 @@ inver n xs = if len <= 2 then Just len else Nothing
   + Result: Failed on some cases...
   + Analysis
     Use the constraint of 'at most 2 steps'.
-- Second submission
+**** Second submission
 #+BEGIN_SRC haskell
 
 import Control.Applicative ((<$>))
@@ -877,5 +908,9 @@ go n as = do
   return $ r + i
 
 #+END_SRC
+**** Thinking
+Thinking of the problem of inverse number.
 
+
+*** TODO Minimum Swaps 2
 
