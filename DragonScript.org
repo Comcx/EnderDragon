@@ -21,7 +21,7 @@
 *** Concrete Mathematics
 *** CLRS
 
-* Dragons [11/14]
+* Dragons [11/15]
 
 ** DONE Longest Substring Without Repeating Characters                 :EASY:
 
@@ -726,6 +726,15 @@ int Solution::maximalSquare(vector<vector<char>>& matrix) {
 }
 #+END_SRC
 
+** NEXT Divisible Sum Pairs
+#+BEGIN_SRC haskell
+
+divisibleSumPairs n k ar = length $ 
+  Data.List.filter (\(a, b) -> mod (a + b) k == 0) (list ar)
+
+list ar = [(ar !! a, ar !! b) | a <- [0..n], b <- [a..n], a /= b] where
+  n = length ar - 1
+#+END_SRC
 ** NEXT [HackerRank] Interview Preparation Kit [6/8]
 *** DONE Sock Merchant
 #+BEGIN_SRC haskell
