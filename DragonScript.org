@@ -72,6 +72,29 @@ fib4 max = go max where
 fib1, fib3 and fib4 are more efficient than others.
 In practice, it's easier to come up with the method of fib1 or fib4.
 
+well, good news! I found a kata where none of my fibs can pass through...
+Finally I found the solution below(now we have fib5 :):
+#+BEGIN_SRC haskell
+
+module Fibonacci where
+
+import Data.List
+import Data.Bits
+
+fib' :: Int -> Integer
+fib' n = snd . foldl' fib'' (1, 0) . dropWhile not $ testedBits where
+  testedBits = [testBit n k | k <- let s = bitSize n in [s - 1,s - 2..0]]
+  fib'' (f, g) p
+    | p         = (f * (f + 2 * g), ss)
+    | otherwise = (ss, g * (2 * f - g))
+    where ss = f * f + g * g
+
+fib5 :: Integer -> Integer
+fib5 n
+  | n < 0 = -(-1)^(-n) * fib (-n)
+  | otherwise = fib' $ fromInteger n
+#+END_SRC
+
 ****** DONE Translating into memorization version(dynamic programming)
 In fact, if we can come up with a reasonable recursion method, then we can directly
 translate it to versions like fib4. Here's the template:
@@ -145,6 +168,7 @@ then all we have to do is to solve the dependency problem.
 
 ***** NEXT Patterns of dependency
 - *Some notations*
+
   In dynamic programming, we have many states of the function, we denote these states as
   vectors in n-dimension space. For instance, fib0 has 1-dimension vectors such as fib0 0, fib0 1, etc;
   fib1 has 2-dimension vectors such as fib1 0 1, fib1 1 1, etc.
