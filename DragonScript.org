@@ -31,12 +31,15 @@ imperative ones...
 Well, firstly, some techniques...
 *** TODO Dynamic Programming
 **** NEXT What's DP's really about ?
-***** NEXT Version 1: A _memorization_ perspect
+***** DONE Version 1: A _memorization_ perspect
 If we are in a lazy programming environment, it would be apparently easy to implement.
   
 ! Using /Haskell/ and /Scala/
-****** TODO Fibonacci numbers 
+****** DONE Fibonacci numbers 
+By the way, this makes me recall the website: [[https://www.willamette.edu/~fruehr/haskell/evolution.html][Haskell.evolution]] 
 #+BEGIN_SRC haskell
+
+import Data.Array
 
 -- Naive recursion
 fib0 0 = 0
@@ -47,14 +50,14 @@ fib0 n = fib (n-1) + fib (n-2)
 fib1 n = f n 0 1 where
   f n a b = if n == 0 then a else f (n-1) b (a+b)
 
--- CPS
+-- CPS(seems the worst one...)
 fib2 n = f n $ \x -> x where
   f n g = case n of
     0 -> g 0
     1 -> g 1
-    _ -> f (n-1) $ \a -> f (n-2) $  \b -> g (a+b)
+    _ -> f (n-1) $ \a -> f (n-2) $ \b -> g (a+b)
 
--- Lazy memorization
+-- Lazy memorization with automatic GC(seems the best one?)
 fib3 n = fibs !! n
   where fibs = 0 : 1 : zipWith (+) fibs (drop 1 fibs)
 
@@ -66,6 +69,65 @@ fib4 max = go max where
   fibs = listArray (0, max) [go x | x <- [0..max]]
 
 #+END_SRC
+fib1, fib3 and fib4 are more efficient than others.
+In practice, it's easier to come up with the method of fib1 or fib4.
+
+****** DONE Translating into memorization version(dynamic programming)
+In fact, if we can come up with a reasonable recursion method, then we can directly
+translate it to versions like fib4. Here's the template:
+#+BEGIN_SRC haskell
+
+-- Naive recursion version
+f n = g $ f $ h n
+-- ||
+-- \/
+-- Memorization version
+f' n = rc ! n where
+  rc = listArray bounds [f n | n <- bound]
+#+END_SRC
+Now, what about fib1, how can we find a tail recursion version of any recursions?
+
+***** NEXT Version 2: Tail recursion calculus
+When I began programming in FP style before, I in a sense regard tail recursion as
+a fp-version loop in imperative languages. Therefore, if we want to optimize a naive
+recursion by tail recursion, we are going to translate naive recursions into loops without
+stack.
+
+Let's have a look at the fib1 version again.
+#+BEGIN_SRC haskell
+
+-- tailrec
+fib1 n = f n 0 1 where
+  f n a b = if n == 0 then a else f (n-1) b (a+b)
+#+END_SRC
+we can try to find the form in this way:
+#+BEGIN_SRC haskell
+
+-- Step 1 ==> A first attempt is to add fib(n + 1) to both sides of the equation:
+fib (n + 1) + fib (n + 2) = fib n + 2 * fib (n + 1)
+
+-- Step 2 ==> The two sides of the equation look much more alike, 
+-- but there is still an essential difference, which is the coefficient of the second term of each side. 
+-- On the left side of the equation, it is 1 and, on the right, it is 2. To remedy this, we can introduce a variable b:
+fib (n + 1) + b * fib (n + 2) = b * fib n + (b + 1) * fib (n + 1)
+
+-- We notice that the coefficients of the first term are not the same (1 on the left and b on the right), 
+-- so we introduce a variable a:
+a * fib (n + 1) + b * fib (n + 2) = b * fib n + (a + b) * fib (n + 1)
+
+-- Now the two sides have the same form (call it F), which we can define as:
+F a b n = a * fib n + b * fib (n + 1)
+
+-- Then we have
+F a b (n + 1) = F b (a + b) n
+
+-- and
+F a b 0 = a * fib 0 + b * fib 1 = a + b
+
+-- Finally, by definition of F:
+fib n = F 1 0 n
+#+END_SRC
+
 
 * Dragons [13/17]
 
