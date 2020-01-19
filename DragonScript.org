@@ -15,18 +15,57 @@
 :END:
 
 
-* Weapons
+* Weapons [0/2]
 
-** Books
+** TODO Books
 *** Concrete Mathematics
 *** CLRS
 
-** Lazy Robot Project
+** TODO Lazy Robot Project
 :README:
+Trying to build most algorithms from functional implemention to
+imperative ones...
 
 :END:
 
+Well, firstly, some techniques...
+*** TODO Dynamic Programming
+**** NEXT What's DP's really about ?
+***** NEXT Version 1: A _memorization_ perspect
+If we are in a lazy programming environment, it would be apparently easy to implement.
+  
+! Using /Haskell/ and /Scala/
+****** TODO Fibonacci numbers 
+#+BEGIN_SRC haskell
 
+-- Naive recursion
+fib0 0 = 0
+fib0 1 = 1
+fib0 n = fib (n-1) + fib (n-2)
+
+-- Tailrec
+fib1 n = f n 0 1 where
+  f n a b = if n == 0 then a else f (n-1) b (a+b)
+
+-- CPS
+fib2 n = f n $ \x -> x where
+  f n g = case n of
+    0 -> g 0
+    1 -> g 1
+    _ -> f (n-1) $ \a -> f (n-2) $  \b -> g (a+b)
+
+-- Lazy memorization
+fib3 n = fibs !! n
+  where fibs = 0 : 1 : zipWith (+) fibs (drop 1 fibs)
+
+-- Yet another memorization
+fib4 max = go max where 
+  go 0 = 0
+  go 1 = 1
+  go n = fibs ! (n - 1) + fibs ! (n - 2)
+  fibs = listArray (0, max) [go x | x <- [0..max]]
+
+#+END_SRC
 
 * Dragons [13/17]
 
