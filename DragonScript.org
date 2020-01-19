@@ -21,7 +21,14 @@
 *** Concrete Mathematics
 *** CLRS
 
-* Dragons [11/15]
+** Lazy Robot Project
+:README:
+
+:END:
+
+
+
+* Dragons [13/17]
 
 ** DONE Longest Substring Without Repeating Characters                 :EASY:
 
@@ -735,7 +742,7 @@ divisibleSumPairs n k ar = length $
 list ar = [(ar !! a, ar !! b) | a <- [0..n], b <- [a..n], a /= b] where
   n = length ar - 1
 #+END_SRC
-** NEXT [HackerRank] Interview Preparation Kit [6/8]
+** NEXT [HackerRank] Interview Preparation Kit [7/8]
 *** DONE Sock Merchant
 #+BEGIN_SRC haskell
 map' = Data.List.map
@@ -831,7 +838,7 @@ rotLeft :: [Int] -> Int -> [Int]
 rotLeft a d = rot a $ mod d (length a) where
   rot ar n = drop' n ar ++ take' n ar
 #+END_SRC
-*** NEXT New Year Chaos
+*** DONE New Year Chaos
 **** Description
 [[https://www.hackerrank.com/challenges/new-year-chaos/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays][HackerRank]]
 It's New Year's Day and everyone's in line for the Wonderland rollercoaster ride! 
@@ -920,6 +927,69 @@ go n as = do
 **** Thinking
 Thinking of the problem of inverse number.
 
+*** NEXT Minimum Swaps 2
+**** First submission
+#+BEGIN_SRC haskell
 
-*** TODO Minimum Swaps 2
+minimumSwaps [] = 0
+minimumSwaps ar = case swaps arr 0 (Just 0) of
+  Just x  -> x
+  Nothing -> 0
+  where arr = listArray (0, length ar - 1) ar
+
+swaps :: Array Int Int -> Int -> Maybe Int -> Maybe Int
+swaps arr i n
+  | i == length arr = n
+  | otherwise       = 
+    if arr ! i == i + 1 then swaps arr (i + 1) n 
+    else do 
+      j <- getIndex (i + 1) arr
+      swaps (swapByIndex i j arr) (i + 1) $! ((1 +) <$> n)
+
+getIndex x arr = fmap fst $ find ((== x) . snd) $ assocs arr
+
+swapByIndex :: (Ix a) => a -> a -> Array a b -> Array a b
+swapByIndex i j xs = xs // [(i, xs ! j), (j, xs ! i)]
+
+#+END_SRC
++ Result: Time out on some cases...
+**** Second submission
+
+** DONE Decode the Morse code
+#+BEGIN_SRC haskell
+
+module Codewars.Kata.DecodeMorse (decodeMorse) where
+
+import Codewars.Kata.DecodeMorse.Preload (morseCodes)
+
+import Data.List.Split (splitOn)
+import Data.Map.Strict ((!))
+
+decodeMorse :: String -> String
+decodeMorse = unwords . filter (not . null) . map (concatMap (morseCodes!) . words) . splitOn "   "
+#+END_SRC
+** DONE Shortest Knight Path
+#+BEGIN_SRC haskell
+
+import Data.Char
+
+knight :: String -> String -> Int
+knight s t = path [s] t 0
+
+-- Brute BFS ...
+path :: [String] -> String -> Int -> Int
+path s t a = case filter (== t) s of
+  [] -> path ((pos <$> s) >>= moves) t (a + 1)
+  (x:xs) -> a
+  where pos [c, i] = (c, read [i] :: Int)
+
+moves :: (Char, Int) -> [String]
+moves (c, n) = [chr c' : show n'
+  | c' <- map ($ ord c) pos
+  , n' <- map ($ n) pos
+  , n' > 0 && n' < 9, c' >= ord 'a' && c' <= ord 'h'
+  , abs (n' - n) /= abs (c' - ord c)
+  ] where pos = [(+ 1), (+ 2), (\i -> i - 1), (\i -> i - 2)]
+#+END_SRC
+
 
