@@ -138,10 +138,22 @@ calculation context accumulation.
 Therefore, if the recursion is tree-like, we can not simplely use CPS to create out tailrec version.
 
 **** NEXT Implementing DP in imperative strict languages
+! Using C++ or Python
+
 In general, if we have already found the naive recursive method, 
 then all we have to do is to solve the dependency problem.
 
 ***** NEXT Patterns of dependency
+- *Some notations*
+  In dynamic programming, we have many states of the function, we denote these states as
+  vectors in n-dimension space. For instance, fib0 has 1-dimension vectors such as fib0 0, fib0 1, etc;
+  fib1 has 2-dimension vectors such as fib1 0 1, fib1 1 1, etc.
+
+****** TODO Simple dependency by naive order
+The most simple dependency pattern is orderred by number orders.
+for example, if a < b(or a > b), then a is denpendent with b.
+These patterns can be tranlated into DP without much thinking.
+
 
 
 * Dragons [13/17]
