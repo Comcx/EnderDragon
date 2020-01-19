@@ -21,7 +21,7 @@
 *** Concrete Mathematics
 *** CLRS
 
-** TODO Lazy Robot Project
+** NEXT Lazy Robot Project
 :README:
 Trying to build most algorithms from functional implemention to
 imperative ones...
@@ -30,7 +30,7 @@ imperative ones...
 
 Well, firstly, some techniques...
 *** TODO Dynamic Programming
-**** NEXT What's DP's really about ?
+**** DONE What's DP's really about ?
 ***** DONE Version 1: A _memorization_ perspect
 If we are in a lazy programming environment, it would be apparently easy to implement.
   
@@ -87,7 +87,7 @@ f' n = rc ! n where
 #+END_SRC
 Now, what about fib1, how can we find a tail recursion version of any recursions?
 
-***** NEXT Version 2: Tail recursion calculus
+***** DONE Version 2: Tail recursion calculus
 When I began programming in FP style before, I in a sense regard tail recursion as
 a fp-version loop in imperative languages. Therefore, if we want to optimize a naive
 recursion by tail recursion, we are going to translate naive recursions into loops without
@@ -111,11 +111,11 @@ fib (n + 1) + fib (n + 2) = fib n + 2 * fib (n + 1)
 -- On the left side of the equation, it is 1 and, on the right, it is 2. To remedy this, we can introduce a variable b:
 fib (n + 1) + b * fib (n + 2) = b * fib n + (b + 1) * fib (n + 1)
 
--- We notice that the coefficients of the first term are not the same (1 on the left and b on the right), 
+-- Step3 ==> We notice that the coefficients of the first term are not the same (1 on the left and b on the right), 
 -- so we introduce a variable a:
 a * fib (n + 1) + b * fib (n + 2) = b * fib n + (a + b) * fib (n + 1)
 
--- Now the two sides have the same form (call it F), which we can define as:
+-- Step 4 ==> Now the two sides have the same form (call it F), which we can define as:
 F a b n = a * fib n + b * fib (n + 1)
 
 -- Then we have
@@ -124,9 +124,24 @@ F a b (n + 1) = F b (a + b) n
 -- and
 F a b 0 = a * fib 0 + b * fib 1 = a + b
 
--- Finally, by definition of F:
+-- Step 5 ==> Finally, by definition of F:
 fib n = F 1 0 n
 #+END_SRC
+Can we find a more general procedure to produce a tailrec version of recursions?
+If not, what kind of recursions can be translated in this way?
+
+In the first place, I came up with the *CPS* style, which is like /fib2/ .
+If the CPS style is more efficient, we can easily translate any recursion to its CPS style.
+However, sadly, CPS style is the worst version os fib* and the CPS style is just another way of
+calculation context accumulation.
+
+Therefore, if the recursion is tree-like, we can not simplely use CPS to create out tailrec version.
+
+**** NEXT Implementing DP in imperative strict languages
+In general, if we have already found the naive recursive method, 
+then all we have to do is to solve the dependency problem.
+
+***** NEXT Patterns of dependency
 
 
 * Dragons [13/17]
